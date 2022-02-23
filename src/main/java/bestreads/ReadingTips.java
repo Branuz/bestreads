@@ -3,60 +3,29 @@ package bestreads;
 import java.util.*;
 
 public class ReadingTips {
-    private ArrayList<Tip> tips;
-    
-    class Tip {
-	private String url;
-	private String title;
-
-	public Tip(String url, String title) {
-	    this.url = url;
-	    this.title = title;
-	}
-	
-	public void setUrl(String url) {
-	    this.url = url;
-	}
-	
-	public String getUrl() {
-	    return this.url;
-	}
-
-	public void setTitle(String title) {
-	    this.title = title;
-	}
-	
-	public String getTitle() {
-	    return this.title;
-	}
-
-	// @override
-	public String toString() {
-	    return this.title + " : " + this.url;
-	}
-    }
+    private ArrayList<ReadingTip> tips;
     
     public ReadingTips() {
-	this.tips = new ArrayList<Tip>();
+	    this.tips = new ArrayList<ReadingTip>();
     }
 
     public void addTip(String url, String title) {
-	Tip new_tip = new Tip(url, title);
+	    ReadingTip newTip = new ReadingTip(url, title);
 	
-	this.tips.add(new_tip);    
+	    this.tips.add(newTip);    
     }
 
     // @override
     public String toString() {
-	String all_tips = "";
+	    String allTips = "";
 	
-	int i = 0;
+	    int i = 0;
 	
-	while(this.tips.size() > i) {
-	    all_tips += this.tips.get(i) + "\n";
-	    i++;
-	}
+	    while (this.tips.size() > i) {
+	        allTips += this.tips.get(i) + "\n";
+	        i++;
+	    }
 
-	return all_tips;
+	    return allTips;
     }
 }

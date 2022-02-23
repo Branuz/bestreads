@@ -1,20 +1,19 @@
 package bestreads;
 
 public class Main {
-
     public String cucumberTestValue;
 
     public static void main(String[] args) {
         Main test = new Main();
         test.testMethod();
-        System.out.println(test.cucumberTestValue);
+	    System.out.println(test.cucumberTestValue);
 
-	ReadingTips tips = new ReadingTips();
+	    ReadingTips tips = new ReadingTips();
 
-	tips.addTip("http://foo.bar", "First tip");
-	tips.addTip("http://bar.baz", "Second tip");
+	    tips.addTip("http://foo.bar", "First tip");
+	    tips.addTip("http://bar.baz", "Second tip");
 
-	System.out.println(tips);
+	    System.out.println(tips);
     }
 
     //Just for setting up the testing will be deleted later
