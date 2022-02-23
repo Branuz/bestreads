@@ -33,9 +33,9 @@ public class UserInterfaceTest {
 
     @Test
     public void appCanBeClosed() {
-       IOStub io = new IOStub("3");
-       new UserInterface(io).start();
-       assertEquals("Closing", io.outputs.get(5));
+        IOStub io = new IOStub("3");
+        new UserInterface(io).start();
+        assertEquals("Closing", io.outputs.get(5));
     }
 }
 
