@@ -1,16 +1,16 @@
-package bestreads;
+package bestreads.readingtip;
 
 import java.util.*;
 
 public class ReadingTips {
-    private ArrayList<ReadingTip> tips;
+    private ArrayList<Tip> tips;
     
     public ReadingTips() {
-	    this.tips = new ArrayList<ReadingTip>();
+	    this.tips = new ArrayList<Tip>();
     }
 
     public void addTip(String url, String title) {
-	    ReadingTip newTip = new ReadingTip(url, title);
+	    Tip newTip = new Tip(url, title);
 	
 	    this.tips.add(newTip);    
     }

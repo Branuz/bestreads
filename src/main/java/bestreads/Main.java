@@ -1,5 +1,8 @@
 package bestreads;
 
+import bestreads.readingtip.ReadingTips;
+import bestreads.ui.UserInterface;
+
 public class Main {
     public String cucumberTestValue;
 

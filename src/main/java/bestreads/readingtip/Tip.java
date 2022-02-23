@@ -1,11 +1,11 @@
-package bestreads;
+package bestreads.readingtip;
 
     
-class ReadingTip {
+public class Tip {
     private String url;
     private String title;
 
-    public ReadingTip(String url, String title) {
+    public Tip(String url, String title) {
 	    this.url = url;
 	    this.title = title;
     }

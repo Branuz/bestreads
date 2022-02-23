@@ -1,6 +1,8 @@
-package bestreads;
+package bestreads.ui;
 
 import java.util.Scanner;
+
+import bestreads.readingtip.ReadingTips;
 
 public class UserInterface {
     private ReadingTips tips;
@@ -41,6 +43,7 @@ public class UserInterface {
     }
     
     private void addTip() {
+
         System.out.println("Reading Tip Title?");
         String title = this.scanner.nextLine();
         System.out.println("URL?");
