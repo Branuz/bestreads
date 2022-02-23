@@ -5,3 +5,8 @@
 build
 #Ignore vscode settings
 .vscode
+
+# Ignore Emacs backups
+\#*\#
+*~
+.\#*
