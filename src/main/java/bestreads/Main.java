@@ -4,6 +4,8 @@ public class Main {
     public String cucumberTestValue;
 
     public static void main(String[] args) {
+        UserInterface ui = new UserInterface();
+        ui.start();
         Main test = new Main();
         test.testMethod();
 	    System.out.println(test.cucumberTestValue);
