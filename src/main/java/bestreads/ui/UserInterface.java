@@ -6,19 +6,19 @@ import bestreads.readingtip.ReadingTips;
 
 public class UserInterface {
     private ReadingTips tips;
-    private Scanner scanner;
+    private IO io;
     
-    public UserInterface() {
+    public UserInterface(IO io) {
         this.tips = new ReadingTips();
-        this.scanner = new Scanner(System.in);
+        this.io = io;
     }
     
     public void start() {
-        System.out.println("Welcome to Bestreads");
+        io.print("Welcome to Bestreads");
         
         while (true) {
             showCommands();
-            String input = this.scanner.nextLine();
+            String input = io.nextLine();
             if (!input.matches("([1-3])")) {
                 continue;
             }
@@ -30,29 +30,30 @@ public class UserInterface {
                 showTips();
             }
             if (command == 3) {
+                io.print("Closing");
                 break;
             }
         }
     }
     
     public void showCommands() {
-        System.out.println("Commands:");
-        System.out.println("1 -- Add reading tip");
-        System.out.println("2 -- Show reading tips");
-        System.out.println("3 -- Exit program");
+        io.print("Commands:");
+        io.print("1 -- Add reading tip");
+        io.print("2 -- Show reading tips");
+        io.print("3 -- Exit program");
     }
     
-    private void addTip() {
+    public void addTip() {
 
-        System.out.println("Reading Tip Title?");
-        String title = this.scanner.nextLine();
-        System.out.println("URL?");
-        String url = this.scanner.nextLine();
+        io.print("Reading Tip Title?");
+        String title = io.nextLine();
+        io.print("URL?");
+        String url = io.nextLine();
         this.tips.addTip(url, title);
     }
     
-    private void showTips() {
-        System.out.println("Reading Tips:");
-        System.out.println(this.tips.toString());
+    public void showTips() {
+        io.print("Reading Tips:");
+        io.print(this.tips.toString());
     }
 }

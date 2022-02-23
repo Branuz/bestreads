@@ -2,12 +2,13 @@ package bestreads;
 
 import bestreads.readingtip.ReadingTips;
 import bestreads.ui.UserInterface;
+import bestreads.ui.UserInterfaceIO;
 
 public class Main {
     public String cucumberTestValue;
 
     public static void main(String[] args) {
-        UserInterface ui = new UserInterface();
+        UserInterface ui = new UserInterface(new UserInterfaceIO());
         ui.start();
         Main test = new Main();
         test.testMethod();
