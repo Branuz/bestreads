@@ -3,32 +3,23 @@ package bestreads;
 import bestreads.ui.IO;
 import bestreads.ui.UserInterface;
 import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class UserInterfaceTest {
     
-    public UserInterfaceTest() {
+    @Test
+    public void aTipCanBeSelected() {
+       IOStub io = new IOStub("1");
+       new UserInterface(io).start();
+       assertEquals("Reading Tip Title?", io.outputs.get(5));
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    @Test
+    public void showTipsCanBeSelected() {
+       IOStub io = new IOStub("2");
+       new UserInterface(io).start();
+       assertEquals("Reading Tips:", io.outputs.get(5));
     }
 
     @Test
@@ -36,6 +27,13 @@ public class UserInterfaceTest {
        IOStub io = new IOStub("3");
        new UserInterface(io).start();
        assertEquals("Closing", io.outputs.get(5));
+    }
+    
+    @Test
+    public void invalidCommandNotAccepted() {
+       IOStub io = new IOStub("invalidUserInput");
+       new UserInterface(io).start();
+       assertEquals("Invalid command", io.outputs.get(5));
     }
 }
 

@@ -15,11 +15,14 @@ public class UserInterface {
     
     public void start() {
         io.print("Welcome to Bestreads");
+        int maxAllowedLoops = 0;
         
-        while (true) {
+        while (maxAllowedLoops < 50) {
             showCommands();
             String input = io.nextLine();
             if (!input.matches("([1-3])")) {
+                io.print("Invalid command");
+                maxAllowedLoops++;
                 continue;
             }
             int command = Integer.valueOf(input);
@@ -33,6 +36,7 @@ public class UserInterface {
                 io.print("Closing");
                 break;
             }
+            maxAllowedLoops++;
         }
     }
     
