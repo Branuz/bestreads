@@ -10,16 +10,16 @@ public class UserInterfaceTest {
     
     @Test
     public void aTipCanBeSelected() {
-       IOStub io = new IOStub("1");
-       new UserInterface(io).start();
-       assertEquals("Reading Tip Title?", io.outputs.get(5));
+        IOStub io = new IOStub("1");
+        new UserInterface(io).start();
+        assertEquals("Reading Tip Title?", io.outputs.get(5));
     }
     
     @Test
     public void showTipsCanBeSelected() {
-       IOStub io = new IOStub("2");
-       new UserInterface(io).start();
-       assertEquals("Reading Tips:", io.outputs.get(5));
+        IOStub io = new IOStub("2");
+        new UserInterface(io).start();
+        assertEquals("Reading Tips:", io.outputs.get(5));
     }
 
     @Test
@@ -31,9 +31,9 @@ public class UserInterfaceTest {
     
     @Test
     public void invalidCommandNotAccepted() {
-       IOStub io = new IOStub("invalidUserInput");
-       new UserInterface(io).start();
-       assertEquals("Invalid command", io.outputs.get(5));
+        IOStub io = new IOStub("invalidUserInput");
+        new UserInterface(io).start();
+        assertEquals("Invalid command", io.outputs.get(5));
     }
 }
 
