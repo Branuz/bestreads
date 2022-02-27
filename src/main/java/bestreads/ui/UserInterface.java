@@ -51,9 +51,6 @@ public class UserInterface {
 
         io.print("Please give the title for the tip");
         String title = io.nextLine();
-        if (title.matches("([1-3])")) {
-            io.print("Ops! Please choose between 1 to 3.");
-        }
         io.print("Please add the url for the tip");
         String url = io.nextLine();
         this.tips.addTip(url, title);
