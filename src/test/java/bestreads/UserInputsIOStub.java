@@ -1,0 +1,27 @@
+package bestreads;
+
+import bestreads.ui.IO;
+import java.util.ArrayList;
+
+public class UserInputsIOStub implements IO {
+    
+    String[] userInputs;
+    int inputCount;
+    ArrayList<String> outputs;
+    
+    public UserInputsIOStub(String... input) {
+        this.userInputs = input;
+        this.outputs = new ArrayList<String>();
+    }
+
+    public void print(String m) {
+        outputs.add(m);
+    }
+
+    public String nextLine() {
+        String input = this.userInputs[inputCount];
+        inputCount++;
+        return input;
+    }
+    
+}
