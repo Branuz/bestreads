@@ -32,7 +32,7 @@ You can run the tests with the following command.
 * The functionality has been programmed.
 * Tests for the new functionality have been written.
 * Unit tests and integration tests have been passed.
-* Code coverage of new tests is at least 85 %.
+* Code coverage of tests is at least 85 %.
 * The new functionality has been manually tested by the programmer.
 * The functionality has been documented.
   * JavaDoc
