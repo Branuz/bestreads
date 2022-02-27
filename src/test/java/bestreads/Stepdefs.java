@@ -17,6 +17,7 @@ public class Stepdefs{
     @Given("command {string} is selected")
     public void commandIsGiven(String command) {
         this.command = command;
+        this.testTips = new ReadingTips();
     }
 
     @When("title {string} and url {string} are entered")
