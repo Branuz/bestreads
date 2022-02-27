@@ -46,3 +46,8 @@ At the moment tips are not stored to any database or file. User can access them 
 * Changes have been pushed to GitHub.
   * A pull request has been created when adding new functionalities (i.e. not when adding minor fixes or tests)
   * The pull request has been reviewed and accepted by a team member
+  
+  
+<h2>BurnDown Charts<h/2>
+  <img width="561" alt="image" src="https://user-images.githubusercontent.com/1563603/155896021-a71a30d6-08c6-4aa7-8f82-113bcfff9733.png">
+
