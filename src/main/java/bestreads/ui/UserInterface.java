@@ -16,9 +16,10 @@ public class UserInterface {
     /** Contsructor for the UserInterface.
      *
      * @param io Object for reading user input and writing to user's screen
+     * @param tips Object for storing the tips
      */
-    public UserInterface(IO io) {
-        this.tips = new ReadingTips();
+    public UserInterface(IO io, ReadingTips tips) {
+        this.tips = tips;
         this.io = io;
     }
 
