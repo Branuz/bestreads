@@ -25,7 +25,7 @@ You can run the tests with the following command.
 At the moment tips are not stored to any database or file. User can access them only during session.
 
 
-<img width="200" alt="image" src="https://user-images.githubusercontent.com/1563603/155896366-85f7214d-f02b-4f38-9d35-2baa078d012f.png">
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/155896366-85f7214d-f02b-4f38-9d35-2baa078d012f.png">
 
 
 <h2>Product backlog</h2>
@@ -50,5 +50,5 @@ At the moment tips are not stored to any database or file. User can access them 
   
 <h2>BurnDown Charts</h2>
 
-<img width="250" alt="image" src="https://user-images.githubusercontent.com/1563603/155896021-a71a30d6-08c6-4aa7-8f82-113bcfff9733.png">
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/155896021-a71a30d6-08c6-4aa7-8f82-113bcfff9733.png">
 
