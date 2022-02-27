@@ -10,14 +10,14 @@ public class UserInterfaceTest {
     
     @Test
     public void aTipCanBeSelected() {
-        IOStub io = new IOStub("1");
+        IOStub io = new IOStub("1", "title", "url", "3");
         new UserInterface(io).start();
         assertEquals("Please add the url for the tip", io.outputs.get(7));
     }
     
     @Test
     public void showTipsCanBeSelected() {
-        IOStub io = new IOStub("2");
+        IOStub io = new IOStub("2", "3");
         new UserInterface(io).start();
         assertEquals("Your Reading Tips:", io.outputs.get(6));
     }
@@ -31,7 +31,7 @@ public class UserInterfaceTest {
     
     @Test
     public void invalidCommandNotAccepted() {
-        IOStub io = new IOStub("invalidUserInput");
+        IOStub io = new IOStub("invalidUserInput", "3");
         new UserInterface(io).start();
         assertEquals("Ops! Please choose between 1 to 3.", io.outputs.get(6));
     }
@@ -39,10 +39,11 @@ public class UserInterfaceTest {
 
 class IOStub implements IO {
     
-    String input;
+    String[] input;
+    int inputCount;
     ArrayList<String> outputs;
     
-    public IOStub(String input) {
+    public IOStub(String... input) {
         this.input = input;
         this.outputs = new ArrayList<String>();
     }
@@ -52,7 +53,7 @@ class IOStub implements IO {
     }
 
     public String nextLine() {
-        return this.input;
+        return this.input[inputCount++];
     }
     
 }
