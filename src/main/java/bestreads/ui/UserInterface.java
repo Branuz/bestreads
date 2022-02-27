@@ -28,19 +28,19 @@ public class UserInterface {
     public void start() {
 
         io.print("\nnunununununununununununununununununununununununununununununun\n");
-        io.print("Welcome to Bestreads!\n");
+        io.print("Welcome to Bestreads!");
         
         while (true) {
             showCommands();
             String input = io.nextLine();
             if (!input.matches("([1-3])")) {
-                io.print("Ops! Please choose between 1 to 3.");
+                io.print("Ops! Please choose between 1 and 3.");
                 continue;
             }
             int command = Integer.valueOf(input);
             if (command == 1) {
                 addTip();
-                io.print("Tip was added successfully!");
+
             }
             if (command == 2) {
                 showTips();
@@ -56,7 +56,7 @@ public class UserInterface {
     /** Print out all the possible choices
      */
     public void showCommands() {
-        io.print("Please choose what you wish to do");
+        io.print("\nPlease choose what you wish to do");
         io.print("1 -- Add a reading tip");
         io.print("2 -- Show reading tips");
         io.print("3 -- Exit program\n");
@@ -70,7 +70,12 @@ public class UserInterface {
         String title = io.nextLine();
         io.print("Please add the url for the tip");
         String url = io.nextLine();
-        this.tips.addTip(url, title);
+        if (!title.isBlank() & !url.isBlank()) {
+            this.tips.addTip(url, title);
+            io.print("Awesome! You just added a new tip - " + title + ": " + url);
+        } else {
+            io.print("Ops! Nothing was added. Both a title and an url are needed.");
+        }
     }
 
     /** Show all reading tips in the database

@@ -2,6 +2,7 @@ package bestreads.main;
 
 import bestreads.ui.UserInterface;
 import bestreads.ui.UserInterfaceIO;
+import bestreads.readingtip.ReadingTips;
 
 /** Main class for the ReadingTips program.
  *
