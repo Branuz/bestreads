@@ -1,28 +1,32 @@
 package bestreads;
 
-import bestreads.main.Main;
 import static org.junit.Assert.assertEquals;
 
+import bestreads.ui.UserInterface;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Stepdefs {
-    Main main;
+public class Stepdefs{
+    private UserInterface ui;
+    private UserInputsIOStub io;
+    private String command;
 
-    @Given("program is ran")
-    public void mainIsInitialized() {
-        main = new Main();
+    @Given("command {string} is selected")
+    public void commandIsGiven(String command) {
+        this.command = command;
     }
 
-    @When("cucumber is tested")
-    public void mainIsRan() {
-        main.testMethod();
+    @When("title {string} and url {string} are entered")
+    public void titleAndUrlAreGiven(String title, String url) {
+        io = new UserInputsIOStub(command, title, url, "3");
+        ui = new UserInterface(io);
+        ui.start();
     }
 
     @Then("the program should say {string}")
-    public void testValueShouldBe(String value) {
-        assertEquals(value, main.cucumberTestValue);
+    public void tipAddedSuccessfully(String value) {
+        assertEquals(value, io.outputs.get(8));
     }
 
 }

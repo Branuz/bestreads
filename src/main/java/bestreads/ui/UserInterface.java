@@ -39,6 +39,7 @@ public class UserInterface {
             int command = Integer.valueOf(input);
             if (command == 1) {
                 addTip();
+                io.print("Tip was added successfully!");
             }
             if (command == 2) {
                 showTips();
