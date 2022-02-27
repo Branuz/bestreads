@@ -33,7 +33,7 @@ public class UserInterfaceTest {
     public void invalidCommandNotAccepted() {
         IOStub io = new IOStub("invalidUserInput");
         new UserInterface(io).start();
-        assertEquals("Ops! Please choose between 1 to 3.", io.outputs.get(6));
+        assertEquals("Ops! Please choose between 1 and 3.", io.outputs.get(6));
     }
 }
 
