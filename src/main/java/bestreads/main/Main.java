@@ -14,9 +14,4 @@ public class Main {
         UserInterface ui = new UserInterface(new UserInterfaceIO());
         ui.start();
     }
-
-    //Just for setting up the testing will be deleted later
-    public void testMethod() {
-        this.cucumberTestValue = "Hello world!";
-    }
 }
