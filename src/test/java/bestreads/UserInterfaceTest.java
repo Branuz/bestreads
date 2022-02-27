@@ -12,28 +12,28 @@ public class UserInterfaceTest {
     public void aTipCanBeSelected() {
         IOStub io = new IOStub("1");
         new UserInterface(io).start();
-        assertEquals("Reading Tip Title?", io.outputs.get(5));
+        assertEquals("Please add the url for the tip", io.outputs.get(7));
     }
     
     @Test
     public void showTipsCanBeSelected() {
         IOStub io = new IOStub("2");
         new UserInterface(io).start();
-        assertEquals("Reading Tips:", io.outputs.get(5));
+        assertEquals("Your Reading Tips:", io.outputs.get(6));
     }
 
     @Test
     public void appCanBeClosed() {
         IOStub io = new IOStub("3");
         new UserInterface(io).start();
-        assertEquals("Closing", io.outputs.get(5));
+        assertEquals("\nSee you soon!", io.outputs.get(6));
     }
     
     @Test
     public void invalidCommandNotAccepted() {
         IOStub io = new IOStub("invalidUserInput");
         new UserInterface(io).start();
-        assertEquals("Invalid command", io.outputs.get(5));
+        assertEquals("Ops! Please choose between 1 to 3.", io.outputs.get(6));
     }
 }
 
