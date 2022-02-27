@@ -10,10 +10,6 @@ To run the application write the following command.
 ./gradlew run
 ```
 
-<h2>Command line<h/2>
-  
-<h3>Testing</h3>
-  
 You can run the tests with the following command.
   
 ```
@@ -27,6 +23,10 @@ You can run the tests with the following command.
   - [x] User can exit the program (write command "3")
 
 At the moment tips are not stored to any database or file. User can access them only during session.
+
+
+<img width="200" alt="image" src="https://user-images.githubusercontent.com/1563603/155896366-85f7214d-f02b-4f38-9d35-2baa078d012f.png">
+
 
 <h2>Product backlog</h2>
 
@@ -48,7 +48,7 @@ At the moment tips are not stored to any database or file. User can access them 
   * The pull request has been reviewed and accepted by a team member
   
   
-<h2>BurnDown Charts<h/2>
+<h2>BurnDown Charts</h2>
 
-<img width="561" alt="image" src="https://user-images.githubusercontent.com/1563603/155896021-a71a30d6-08c6-4aa7-8f82-113bcfff9733.png">
+<img width="250" alt="image" src="https://user-images.githubusercontent.com/1563603/155896021-a71a30d6-08c6-4aa7-8f82-113bcfff9733.png">
 
