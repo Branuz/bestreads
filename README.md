@@ -20,6 +20,14 @@ You can run the tests with the following command.
 ./gradlew test
 ```
 
+<h2>Features and how to use them</h2>
+
+  - [x] User can add a reading tip with a title and an url (write command "1", both title and url must have values)
+  - [x] User can list all the tips she has added (write command "2")
+  - [x] User can exit the program (write command "3")
+
+At the moment tips are not stored to any database or file. User can access them only during session.
+
 <h2>Product backlog</h2>
 
 [BestReads product backlog](https://github.com/Branuz/bestreads/projects/1)
