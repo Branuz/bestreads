@@ -50,5 +50,7 @@ At the moment tips are not stored to any database or file. User can access them 
   
 <h2>BurnDown Charts</h2>
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/155896021-a71a30d6-08c6-4aa7-8f82-113bcfff9733.png">
+
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/155896824-27882a78-274c-49c4-a112-4912e830fd20.png">
+
 
