@@ -1,15 +1,29 @@
 package bestreads.ui;
 import bestreads.readingtip.ReadingTips;
 
+/** Main class for the command line user interface
+ *
+ * @see IO
+ * @see UserInterfaceIO
+ * @see ReadingTips
+ */
 public class UserInterface {
+    /** Reading Tips container */
     private ReadingTips tips;
+    /** All inputs and outputs are routed via this object*/
     private IO io;
-    
+
+    /** Contsructor for the UserInterface.
+     *
+     * @param io Object for reading user input and writing to user's screen
+     */
     public UserInterface(IO io) {
         this.tips = new ReadingTips();
         this.io = io;
     }
-    
+
+    /** Start the main loop of the user interface
+     */
     public void start() {
 
         io.print("\nnunununununununununununununununununununununununununununununun\n");
@@ -39,23 +53,29 @@ public class UserInterface {
             maxAllowedLoops++;
         }
     }
-    
+
+    /** Print out all the possible choices
+     */
     public void showCommands() {
         io.print("Please choose what you wish to do");
         io.print("1 -- Add a reading tip");
         io.print("2 -- Show reading tips");
         io.print("3 -- Exit program\n");
     }
-    
-    public void addTip() {
 
+    /** Asks needed information from user and create a new
+     *  into the database
+     */
+    public void addTip() {
         io.print("Please give the title for the tip");
         String title = io.nextLine();
         io.print("Please add the url for the tip");
         String url = io.nextLine();
         this.tips.addTip(url, title);
     }
-    
+
+    /** Show all reading tips in the database
+     */
     public void showTips() {
         io.print("Your Reading Tips:");
         io.print(this.tips.toString());
