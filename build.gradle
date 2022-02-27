@@ -6,7 +6,7 @@ plugins {
 }
 
 application {
-    mainClass = 'bestreads.Main'
+    mainClass = 'bestreads.main.Main'
 }
 
 repositories {
