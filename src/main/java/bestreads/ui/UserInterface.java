@@ -29,19 +29,18 @@ public class UserInterface {
 
         io.print("\nnunununununununununununununununununununununununununununununun\n");
         io.print("Welcome to Bestreads!\n");
-        int maxAllowedLoops = 0;
         
-        while (maxAllowedLoops < 50) {
+        while (true) {
             showCommands();
             String input = io.nextLine();
             if (!input.matches("([1-3])")) {
                 io.print("Ops! Please choose between 1 to 3.");
-                maxAllowedLoops++;
                 continue;
             }
             int command = Integer.valueOf(input);
             if (command == 1) {
                 addTip();
+                io.print("Tip was added successfully!");
             }
             if (command == 2) {
                 showTips();
@@ -51,7 +50,6 @@ public class UserInterface {
                 io.print("\nnunununununununununununununununununununununununununununununun\n");
                 break;
             }
-            maxAllowedLoops++;
         }
     }
 
