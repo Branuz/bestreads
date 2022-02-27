@@ -1,4 +1,4 @@
-package bestreads;
+package bestreads.main;
 
 import bestreads.readingtip.ReadingTips;
 import bestreads.ui.UserInterface;

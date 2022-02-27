@@ -1,5 +1,6 @@
 package bestreads;
 
+import bestreads.main.Main;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
