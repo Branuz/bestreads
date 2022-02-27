@@ -21,9 +21,11 @@ You can run the tests with the following command.
 ```
 
 <h2>Product backlog</h2>
+
 [BestReads product backlog](https://github.com/Branuz/bestreads/projects/1)
 
 <h2>Definition of done</h2>
+
 * The acceptance criteria of the user story are met.
 * The functionality is defined carefully and broadly enough.
 * The functionality has been designed to be a logical part of the software.
