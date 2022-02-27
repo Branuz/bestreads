@@ -10,3 +10,10 @@ build
 \#*\#
 *~
 .\#*
+
+# Ignore java build files
+*.class
+*.war
+*.ear
+*.nar
+
