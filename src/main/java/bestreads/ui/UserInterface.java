@@ -34,7 +34,7 @@ public class UserInterface {
             showCommands();
             String input = io.nextLine();
             if (!input.matches("([1-3])")) {
-                io.print("Ops! Please choose between 1 and 3.");
+                io.print("Oops! Please choose between 1 and 3.");
                 continue;
             }
             int command = Integer.valueOf(input);
@@ -74,7 +74,7 @@ public class UserInterface {
             this.tips.addTip(url, title);
             io.print("Awesome! You just added a new tip - " + title + ": " + url);
         } else {
-            io.print("Ops! Nothing was added. Both a title and an url are needed.");
+            io.print("Oops! Nothing was added. Both a title and an url are needed.");
         }
     }
 
