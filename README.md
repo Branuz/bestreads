@@ -50,6 +50,7 @@ At the moment tips are not stored to any database or file. User can access them 
   
 <h2>BurnDown Charts</h2>
 
+[BestReads BurnDown] (https://docs.google.com/spreadsheets/d/1fbggwojJdrjL_2Upwlk6DzCwIKgE4XGpoJbnYs0loH4/edit?usp=sharing)
 
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/155896824-27882a78-274c-49c4-a112-4912e830fd20.png">
 
