@@ -19,7 +19,7 @@ public class Main {
         ui.start();
     }
 
-    private static void createDataBaseTables() {
+    public static void createDataBaseTables() {
         DatabaseManager dbManager = new DatabaseManager();
         String tipTable = "CREATE TABLE  IF NOT EXISTS  Tips (id INTEGER PRIMARY KEY, Title TEXT, Url TEXT);";
 
