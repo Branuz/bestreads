@@ -19,6 +19,7 @@ public class ReadingTipsTest {
 	assertNotNull(new ReadingTips());
     }
 
+    // These tests needs to be updated to work with the new db addition before they pass
     @Test
     public void tipsCanBeAdded() {
 	String excepted = "a : A\n";
@@ -27,6 +28,7 @@ public class ReadingTipsTest {
 
 	assertEquals(excepted, testTips.toString());	
     }
+
     @Test
     public void tipsToStringWorksWithListOfTips() {
 	String excepted = "a : A\nb : B\n";

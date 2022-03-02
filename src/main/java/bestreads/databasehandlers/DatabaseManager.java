@@ -1,0 +1,80 @@
+package bestreads.databasehandlers;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import bestreads.readingtip.ReadingTips;
+import bestreads.readingtip.Tip;
+
+public class DatabaseManager {
+    
+    public void inserIntoDatabase(Connection conn, Tip insert) {
+        Statement s  = null;
+        String command = "INSERT INTO Tips(Title, Url) VALUES ('" + insert.getTitle() + "','" + insert.getUrl() + "');";
+
+        try {
+            s = conn.createStatement();
+            s.execute(command); 
+            s.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Tip> getAllTipsFromDatabase(Connection conn) {
+        ResultSet rs = null;
+        Statement s = null;
+        ArrayList<Tip> tips = new ArrayList<>();
+
+        try {
+            s = conn.createStatement();
+            rs = s.executeQuery("SELECT * FROM Tips;");
+
+
+            while (rs.next()) {
+                String title = rs.getString("Title");
+                String url = rs.getString("Url");
+                tips.add(new Tip(title, url));
+            }
+
+            rs.close();
+            s.close();
+            conn.close();
+
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return tips;
+
+    }
+
+    public void updateInDatabase(Connection conn) {
+        //To be made
+    }
+
+    public void removeFromDatabase(Connection conn) {
+        //To be made
+    }
+
+    public void dataBaseCreate(Connection conn, String command) {
+        Statement s  = null;
+
+        try {
+            s = conn.createStatement();
+            s.execute(command); 
+
+            s.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+}

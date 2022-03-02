@@ -1,4 +1,5 @@
 package bestreads.ui;
+
 import bestreads.readingtip.ReadingTips;
 
 /** Main class for the command line user interface

@@ -17,3 +17,6 @@ build
 *.ear
 *.nar
 
+# Ignore db files
+*.db
+
