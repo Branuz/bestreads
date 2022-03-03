@@ -91,6 +91,10 @@ public class UserInterface {
         io.print(this.tips.toString());
     }
 
+    /** Asks needed information from user and 
+     *  deletes selected id from the database
+     */
+
     public void deleteTip() {
         showTips();
         io.print("Give the id of the Reading Tip you want to delete:");
@@ -107,7 +111,7 @@ public class UserInterface {
             }
             
         } else {
-            io.print("Oops! Please give an integer value for the id");
+            io.print("Oops! Please give a number only value for the id");
         }
     }
 }
