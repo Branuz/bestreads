@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import bestreads.databasehandlers.ConnectionManager;
 import bestreads.readingtip.Tip;
 
 public class DatabaseManager {

@@ -1,9 +1,7 @@
 package bestreads;
 
-import bestreads.main.Main;
 import bestreads.readingtip.ReadingTips;
 import bestreads.databasehandlers.DatabaseManager;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -33,7 +31,6 @@ public class ReadingTipsTest {
 
     @Test
     public void tipsToStringWorksWithListOfTips() {
-	String excepted = "a : A\nb : B\n";
 
 	testTips.addTip("A", "a");
 	testTips.addTip("B", "b");
