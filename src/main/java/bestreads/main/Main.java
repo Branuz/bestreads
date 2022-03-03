@@ -14,7 +14,10 @@ public class Main {
     public String cucumberTestValue;
 
     public static void main(String[] args) {
-        UserInterface ui = new UserInterface(new UserInterfaceIO(), new ReadingTips());
+	UserInterfaceIO io = new UserInterfaceIO();
+	ReadingTips tips = new ReadingTips();
+        UserInterface ui = new UserInterface(io, tips);
+	
         createDataBaseTables();
         ui.start();
     }

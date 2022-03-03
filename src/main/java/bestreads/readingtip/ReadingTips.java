@@ -29,9 +29,9 @@ public class ReadingTips {
      * @param title The title text for the tip
      */
     public void addTip(String url, String title) {
-	    Tip newTip = new Tip(url, title);
+	Tip newTip = new Tip(url, title);
 
-	    this.tips.add(newTip);
+	this.tips.add(newTip);
 
         try {
             conn = ConnectionManager.getConnection();
@@ -49,7 +49,7 @@ public class ReadingTips {
      */
     // @override
     public String toString() {
-	    String allTips = "";
+	String allTips = "";
 
 
         try {
@@ -60,13 +60,13 @@ public class ReadingTips {
             e.printStackTrace();
         }
 	
-	    int i = 0;
+	int i = 0;
 	
-	    while (this.tips.size() > i) {
-	        allTips += this.tips.get(i) + "\n";
-	        i++;
-	    }
+	while (this.tips.size() > i) {
+	    allTips += this.tips.get(i) + "\n";
+	    i++;
+	}
 
-	    return allTips;
+	return allTips;
     }
 }
