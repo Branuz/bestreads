@@ -13,14 +13,13 @@ import bestreads.databasehandlers.DatabaseManager;
  */
 public class ReadingTips {
     /** Container for the tips */
-    private ArrayList<Tip> tips;
     private static Connection conn = null;
     private DatabaseManager dbManager = new DatabaseManager();
 
     /** The constructor of the ReadingTips class
      */
     public ReadingTips() {
-	    this.tips = new ArrayList<Tip>();
+	/* construction stuff here */
     }
 
     /** Creates new Tip object and adds it to the cllection
@@ -30,8 +29,6 @@ public class ReadingTips {
      */
     public void addTip(String url, String title) {
 	Tip newTip = new Tip(url, title);
-
-	this.tips.add(newTip);
 
         try {
             conn = ConnectionManager.getConnection();
@@ -50,11 +47,11 @@ public class ReadingTips {
     // @override
     public String toString() {
 	String allTips = "";
-
+	ArrayList<Tip> tips = new ArrayList<Tip>();
 
         try {
             conn = ConnectionManager.getConnection();
-            this.tips = dbManager.getAllTipsFromDatabase(conn);
+            tips = dbManager.getAllTipsFromDatabase(conn);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,8 +59,8 @@ public class ReadingTips {
 	
 	int i = 0;
 	
-	while (this.tips.size() > i) {
-	    allTips += this.tips.get(i) + "\n";
+	while (tips.size() > i) {
+	    allTips += tips.get(i) + "\n";
 	    i++;
 	}
 
