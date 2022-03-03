@@ -2,7 +2,7 @@ package bestreads.main;
 
 import bestreads.ui.UserInterface;
 import bestreads.ui.UserInterfaceIO;
-import bestreads.databasehandlers.ConnectionManager;
+//import bestreads.databasehandlers.ConnectionManager;
 import bestreads.databasehandlers.DatabaseManager;
 import bestreads.readingtip.ReadingTips;
 
@@ -14,11 +14,11 @@ public class Main {
     public String cucumberTestValue;
 
     public static void main(String[] args) {
-	UserInterfaceIO io = new UserInterfaceIO();
+	    UserInterfaceIO io = new UserInterfaceIO();
 	
-	DatabaseManager dbManager = new DatabaseManager();
+	    DatabaseManager dbManager = new DatabaseManager();
 	
-	ReadingTips tips = new ReadingTips(dbManager);
+	    ReadingTips tips = new ReadingTips(dbManager);
         UserInterface ui = new UserInterface(io, tips);
 	
         ui.start();

@@ -1,4 +1,5 @@
 package bestreads.ui;
+import java.util.*;
 
 import bestreads.readingtip.ReadingTips;
 
@@ -34,8 +35,8 @@ public class UserInterface {
         while (true) {
             showCommands();
             String input = io.nextLine();
-            if (!input.matches("([1-3])")) {
-                io.print("Oops! Please choose between 1 and 3.");
+            if (!input.matches("([1-4])")) {
+                io.print("Oops! Please choose between 1 and 4.");
                 continue;
             }
             int command = Integer.valueOf(input);
@@ -51,6 +52,9 @@ public class UserInterface {
                 io.print("\nnunununununununununununununununununununununununununununununun\n");
                 break;
             }
+            if (command == 4) {
+                deleteTip();
+            }
         }
     }
 
@@ -60,6 +64,7 @@ public class UserInterface {
         io.print("\nPlease choose what you wish to do");
         io.print("1 -- Add a reading tip");
         io.print("2 -- Show reading tips");
+        io.print("4 -- Delete reading tip");
         io.print("3 -- Exit program\n");
     }
 
@@ -84,5 +89,25 @@ public class UserInterface {
     public void showTips() {
         io.print("Your Reading Tips:");
         io.print(this.tips.toString());
+    }
+
+    public void deleteTip() {
+        showTips();
+        io.print("Give the id of the Reading Tip you want to delete:");
+        String id = io.nextLine();
+        if (id.matches("(^[0-9]+$)")) {
+            int idd = Integer.valueOf(id);
+            ArrayList<Integer> ids = new ArrayList<Integer>();
+            ids = this.tips.getIds();
+            if (ids.contains(idd)) {
+                this.tips.deleteTip(idd);
+                io.print("Tip with id: " + id + " deleted succesfully");
+            } else {
+                io.print("Tip with id: " + id + " not found");
+            }
+            
+        } else {
+            io.print("Oops! Please give an integer value for the id");
+        }
     }
 }

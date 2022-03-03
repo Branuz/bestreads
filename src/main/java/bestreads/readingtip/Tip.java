@@ -8,6 +8,8 @@ public class Tip {
     private String url;
     /** The tip title */
     private String title;
+    /** The tip id */
+    private int id;
 
     /** Constructor for the Tip class
      *
@@ -17,6 +19,12 @@ public class Tip {
     public Tip(String url, String title) {
 	    this.url = url;
 	    this.title = title;
+    }
+
+    public Tip(String url, String title, int id) {
+	    this.url = url;
+	    this.title = title;
+        this.id = id;
     }
 	
     public void setUrl(String url) {
@@ -35,6 +43,14 @@ public class Tip {
 	    return this.title;
     }
 
+    public int getId() {
+	    return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     /** Converts a Tip to a String
      * 
      * @return String reprsentation of the tip in format:
@@ -42,6 +58,6 @@ public class Tip {
      */
     // @override
     public String toString() {
-	    return this.title + " : " + this.url;
+	    return this.id + " : " + this.title + " : " + this.url;
     }
 }

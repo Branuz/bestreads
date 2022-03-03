@@ -5,6 +5,7 @@ import java.util.*;
 
 import bestreads.databasehandlers.ConnectionManager;
 import bestreads.databasehandlers.DatabaseManager;
+import io.cucumber.java.bs.I;
 
 /** The ReadingTips object contains a collection of
  *  reading tips of Tip class objects.
@@ -19,7 +20,7 @@ public class ReadingTips {
      * @param dbManager Tip database
      */
     public ReadingTips(DatabaseManager dbManager) {
-	this.dbManager = dbManager;
+	    this.dbManager = dbManager;
     }
 
     /** Creates new Tip object and adds it to the cllection
@@ -28,7 +29,7 @@ public class ReadingTips {
      * @param title The title text for the tip
      */
     public void addTip(String url, String title) {
-	Tip newTip = new Tip(url, title);
+	    Tip newTip = new Tip(url, title);
 
         try {
             Connection conn = ConnectionManager.getConnection();
@@ -36,6 +37,34 @@ public class ReadingTips {
         } catch (Exception e) {
             e.printStackTrace();
         }    
+    }
+
+    public void deleteTip(int id) {
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            dbManager.deleteFromDatabase(conn, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    
+    }
+
+    public ArrayList<Integer> getIds() {
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ArrayList<Tip> tips = new ArrayList<Tip>();
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            tips = dbManager.getAllTipsFromDatabase(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        int i = 0;
+        
+        while (tips.size() > i) {
+            ids.add(tips.get(i).getId());
+            i++;
+        }
+        return ids;
     }
 
     /** Produces string representation of all the tips.
@@ -46,24 +75,23 @@ public class ReadingTips {
      */
     // @override
     public String toString() {
-	String allTips = "";
-	ArrayList<Tip> tips = new ArrayList<Tip>();
+        String allTips = "";
+        ArrayList<Tip> tips = new ArrayList<Tip>();
 
         try {
             Connection conn = ConnectionManager.getConnection();
             tips = dbManager.getAllTipsFromDatabase(conn);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-	
-	int i = 0;
-	
-	while (tips.size() > i) {
-	    allTips += tips.get(i) + "\n";
-	    i++;
-	}
+        
+        int i = 0;
+        
+        while (tips.size() > i) {
+            allTips += tips.get(i) + "\n";
+            i++;
+        }
 
-	return allTips;
+	    return allTips;
     }
 }
