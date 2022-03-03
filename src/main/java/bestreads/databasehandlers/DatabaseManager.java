@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-//import bestreads.readingtip.ReadingTips;
+import bestreads.databasehandlers.ConnectionManager;
 import bestreads.readingtip.Tip;
 
 public class DatabaseManager {
@@ -20,11 +20,12 @@ public class DatabaseManager {
 	    }
     }
 			     
-    public void inserIntoDatabase(Connection conn, Tip insert) {
+    public void inserIntoDatabase(Tip insert) {
         Statement s  = null;
         String command = "INSERT INTO Tips(Title, Url) VALUES ('" + insert.getTitle() + "','" + insert.getUrl() + "');";
 
         try {
+	    Connection conn = ConnectionManager.getConnection();
             s = conn.createStatement();
             s.execute(command); 
             s.close();
@@ -34,11 +35,12 @@ public class DatabaseManager {
         }
     }
 
-    public void deleteFromDatabase(Connection conn, int id) {
+    public void deleteFromDatabase(int id) {
         Statement s  = null;
         String command = String.format("DELETE FROM Tips WHERE id=%s;", id);
 
         try {
+	    Connection conn = ConnectionManager.getConnection();	    
             s = conn.createStatement();
             s.execute(command); 
             s.close();
@@ -48,12 +50,14 @@ public class DatabaseManager {
         }
     }
 
-    public ArrayList<Tip> getAllTipsFromDatabase(Connection conn) {
+    
+    public ArrayList<Tip> getAllTipsFromDatabase() {
         ResultSet rs = null;
         Statement s = null;
         ArrayList<Tip> tips = new ArrayList<>();
 
         try {
+	    Connection conn = ConnectionManager.getConnection();	    
             s = conn.createStatement();
             rs = s.executeQuery("SELECT * FROM Tips;");
 
