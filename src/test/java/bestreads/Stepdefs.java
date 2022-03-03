@@ -25,7 +25,7 @@ public class Stepdefs{
 
     @When("title {string} and url {string} are entered")
     public void titleAndUrlAreGiven(String title, String url) {
-        io = new UserInputsIOStub(command, title, url, "3");
+        io = new UserInputsIOStub(command, title, url, "0");
         ui = new UserInterface(io, testTips);
         ui.start();
     }
