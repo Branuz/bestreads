@@ -1,6 +1,7 @@
 package bestreads;
 
 import bestreads.readingtip.ReadingTips;
+import bestreads.databasehandlers.DatabaseManager;
 import bestreads.ui.UserInterface;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +12,8 @@ public class UserInterfaceTest {
 
     @Before
     public void setUp() {
-	this.testTips = new ReadingTips();
+	DatabaseManager dbManager = new DatabaseManager();	
+	this.testTips = new ReadingTips(dbManager);
     }
 
     @Test

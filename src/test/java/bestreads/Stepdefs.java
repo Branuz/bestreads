@@ -3,6 +3,7 @@ package bestreads;
 import static org.junit.Assert.assertEquals;
 
 import bestreads.readingtip.ReadingTips;
+import bestreads.databasehandlers.DatabaseManager;
 import bestreads.ui.UserInterface;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +18,9 @@ public class Stepdefs{
     @Given("command {string} is selected")
     public void commandIsGiven(String command) {
         this.command = command;
-        this.testTips = new ReadingTips();
+
+	DatabaseManager dbManager = new DatabaseManager();	
+        this.testTips = new ReadingTips(dbManager);
     }
 
     @When("title {string} and url {string} are entered")

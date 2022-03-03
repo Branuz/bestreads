@@ -5,33 +5,30 @@ import bestreads.readingtip.ReadingTips;
 import bestreads.databasehandlers.DatabaseManager;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
 public class ReadingTipsTest {
     private ReadingTips testTips;
-    private DatabaseManager dbManager;
-    
+
     @Before
     public void setUp() {
-	this.dbManager = new DatabaseManager();
-	this.testTips = new ReadingTips();
-	//Main.createDataBaseTables();
+	DatabaseManager dbManager = new DatabaseManager();
+	this.testTips = new ReadingTips(dbManager);
     }
 
     @Test
     public void tipsCanBeCreated() {
-	assertNotNull(new ReadingTips());
+	DatabaseManager dbManager = new DatabaseManager();
+	assertNotNull(new ReadingTips(dbManager));
     }
 
-    // These tests needs to be updated to work with the new db addition before they pass
     @Test
     public void tipsCanBeAdded() {
-	String excepted = "a : A\n";
-
 	testTips.addTip("A", "a");
 
-	assertEquals(excepted, testTips.toString());	
+	assertTrue(testTips.toString().contains("a : A"));
     }
 
     @Test
@@ -41,6 +38,7 @@ public class ReadingTipsTest {
 	testTips.addTip("A", "a");
 	testTips.addTip("B", "b");
 
-	assertEquals(excepted, testTips.toString());
+	assertTrue(testTips.toString().contains("a : A"));
+	assertTrue(testTips.toString().contains("b : B"));
     }
 }
