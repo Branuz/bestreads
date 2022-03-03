@@ -38,7 +38,7 @@ public class DatabaseManager {
             while (rs.next()) {
                 String title = rs.getString("Title");
                 String url = rs.getString("Url");
-                tips.add(new Tip(title, url));
+                tips.add(new Tip(url, title));
             }
 
             rs.close();
