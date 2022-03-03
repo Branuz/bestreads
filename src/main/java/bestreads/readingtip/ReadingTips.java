@@ -13,7 +13,6 @@ import bestreads.databasehandlers.DatabaseManager;
  */
 public class ReadingTips {
     /** Container for the tips */
-    private static Connection conn = null;
     private DatabaseManager dbManager = new DatabaseManager();
 
     /** The constructor of the ReadingTips class
@@ -31,7 +30,7 @@ public class ReadingTips {
 	Tip newTip = new Tip(url, title);
 
         try {
-            conn = ConnectionManager.getConnection();
+            Connection conn = ConnectionManager.getConnection();
             dbManager.inserIntoDatabase(conn, newTip);
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +49,7 @@ public class ReadingTips {
 	ArrayList<Tip> tips = new ArrayList<Tip>();
 
         try {
-            conn = ConnectionManager.getConnection();
+            Connection conn = ConnectionManager.getConnection();
             tips = dbManager.getAllTipsFromDatabase(conn);
 
         } catch (Exception e) {
