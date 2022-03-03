@@ -13,12 +13,13 @@ import bestreads.databasehandlers.DatabaseManager;
  */
 public class ReadingTips {
     /** Container for the tips */
-    private DatabaseManager dbManager = new DatabaseManager();
+    private DatabaseManager dbManager;
 
     /** The constructor of the ReadingTips class
+     * @param dbManager Tip database
      */
-    public ReadingTips() {
-	/* construction stuff here */
+    public ReadingTips(DatabaseManager dbManager) {
+	this.dbManager = dbManager;
     }
 
     /** Creates new Tip object and adds it to the cllection

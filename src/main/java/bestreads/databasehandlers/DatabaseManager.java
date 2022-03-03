@@ -9,7 +9,17 @@ import bestreads.readingtip.ReadingTips;
 import bestreads.readingtip.Tip;
 
 public class DatabaseManager {
-    
+
+    /** Constructor for the DatabaseManager class
+     */
+    public DatabaseManager() {
+	try {
+	    dataBaseCreate(ConnectionManager.getConnection());
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+    }
+			     
     public void inserIntoDatabase(Connection conn, Tip insert) {
         Statement s  = null;
         String command = "INSERT INTO Tips(Title, Url) VALUES ('" + insert.getTitle() + "','" + insert.getUrl() + "');";
@@ -62,7 +72,8 @@ public class DatabaseManager {
         //To be made
     }
 
-    public void dataBaseCreate(Connection conn, String command) {
+    public void dataBaseCreate(Connection conn) {
+	String command = "CREATE TABLE  IF NOT EXISTS  Tips (id INTEGER PRIMARY KEY, Title TEXT, Url TEXT);";	
         Statement s  = null;
 
         try {

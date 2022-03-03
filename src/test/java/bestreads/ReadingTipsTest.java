@@ -2,6 +2,7 @@ package bestreads;
 
 import bestreads.main.Main;
 import bestreads.readingtip.ReadingTips;
+import bestreads.databasehandlers.DatabaseManager;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
@@ -9,11 +10,13 @@ import org.junit.Test;
 
 public class ReadingTipsTest {
     private ReadingTips testTips;
-
+    private DatabaseManager dbManager;
+    
     @Before
     public void setUp() {
+	this.dbManager = new DatabaseManager();
 	this.testTips = new ReadingTips();
-    Main.createDataBaseTables();
+	//Main.createDataBaseTables();
     }
 
     @Test

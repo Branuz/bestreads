@@ -15,21 +15,12 @@ public class Main {
 
     public static void main(String[] args) {
 	UserInterfaceIO io = new UserInterfaceIO();
-	ReadingTips tips = new ReadingTips();
+	
+	DatabaseManager dbManager = new DatabaseManager();
+	
+	ReadingTips tips = new ReadingTips(dbManager);
         UserInterface ui = new UserInterface(io, tips);
 	
-        createDataBaseTables();
         ui.start();
-    }
-
-    public static void createDataBaseTables() {
-        DatabaseManager dbManager = new DatabaseManager();
-        String tipTable = "CREATE TABLE  IF NOT EXISTS  Tips (id INTEGER PRIMARY KEY, Title TEXT, Url TEXT);";
-
-        try {
-            dbManager.dataBaseCreate(ConnectionManager.getConnection(), tipTable);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
