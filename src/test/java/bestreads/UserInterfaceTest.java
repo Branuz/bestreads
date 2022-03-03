@@ -18,30 +18,30 @@ public class UserInterfaceTest {
 
     @Test
     public void aTipCanBeSelected() {
-        UserInputsIOStub io = new UserInputsIOStub("1", "title", "url", "3");
+        UserInputsIOStub io = new UserInputsIOStub("1", "title", "url", "0");
         new UserInterface(io, testTips).start();
-        assertEquals("Please add the url for the tip", io.outputs.get(7));
+        assertEquals("Please add the url for the tip", io.outputs.get(8));
     }
 
     @Test
     public void showTipsCanBeSelected() {
-        UserInputsIOStub io = new UserInputsIOStub("2", "3");
+        UserInputsIOStub io = new UserInputsIOStub("2", "0");
         new UserInterface(io, testTips).start();
-        assertEquals("Your Reading Tips:", io.outputs.get(6));
+        assertEquals("Your Reading Tips:", io.outputs.get(7));
     }
 
     @Test
     public void appCanBeClosed() {
-        UserInputsIOStub io = new UserInputsIOStub("3");
+        UserInputsIOStub io = new UserInputsIOStub("0");
         new UserInterface(io, testTips).start();
-        assertEquals("\nSee you soon!", io.outputs.get(6));
+        assertEquals("\nSee you soon!", io.outputs.get(7));
     }
 
     @Test
     public void invalidCommandNotAccepted() {
-        UserInputsIOStub io = new UserInputsIOStub("invalidUserInput", "3");
+        UserInputsIOStub io = new UserInputsIOStub("invalidUserInput", "0");
         new UserInterface(io, testTips).start();
-        assertEquals("Oops! Please choose between 1 and 3.", io.outputs.get(6));
+        assertEquals("Oops! Please choose between 0 and 3.", io.outputs.get(7));
     }
 }
 

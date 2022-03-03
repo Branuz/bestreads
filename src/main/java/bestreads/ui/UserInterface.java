@@ -35,8 +35,8 @@ public class UserInterface {
         while (true) {
             showCommands();
             String input = io.nextLine();
-            if (!input.matches("([1-4])")) {
-                io.print("Oops! Please choose between 1 and 4.");
+            if (!input.matches("([0-3])")) {
+                io.print("Oops! Please choose between 0 and 3.");
                 continue;
             }
             int command = Integer.valueOf(input);
@@ -47,12 +47,12 @@ public class UserInterface {
             if (command == 2) {
                 showTips();
             }
-            if (command == 3) {
+            if (command == 0) {
                 io.print("\nSee you soon!");
                 io.print("\nnunununununununununununununununununununununununununununununun\n");
                 break;
             }
-            if (command == 4) {
+            if (command == 3) {
                 deleteTip();
             }
         }
@@ -64,8 +64,8 @@ public class UserInterface {
         io.print("\nPlease choose what you wish to do");
         io.print("1 -- Add a reading tip");
         io.print("2 -- Show reading tips");
-        io.print("4 -- Delete reading tip");
-        io.print("3 -- Exit program\n");
+        io.print("3 -- Delete reading tip");
+        io.print("0 -- Exit program\n");
     }
 
     /** Asks needed information from user and create a new
