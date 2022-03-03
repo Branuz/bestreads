@@ -25,7 +25,7 @@ public class DatabaseManager {
         String command = "INSERT INTO Tips(Title, Url) VALUES ('" + insert.getTitle() + "','" + insert.getUrl() + "');";
 
         try {
-	    Connection conn = ConnectionManager.getConnection();
+	        Connection conn = ConnectionManager.getConnection();
             s = conn.createStatement();
             s.execute(command); 
             s.close();
@@ -40,7 +40,7 @@ public class DatabaseManager {
         String command = String.format("DELETE FROM Tips WHERE id=%s;", id);
 
         try {
-	    Connection conn = ConnectionManager.getConnection();	    
+	        Connection conn = ConnectionManager.getConnection();	    
             s = conn.createStatement();
             s.execute(command); 
             s.close();
@@ -57,7 +57,7 @@ public class DatabaseManager {
         ArrayList<Tip> tips = new ArrayList<>();
 
         try {
-	    Connection conn = ConnectionManager.getConnection();	    
+	        Connection conn = ConnectionManager.getConnection();	    
             s = conn.createStatement();
             rs = s.executeQuery("SELECT * FROM Tips;");
 

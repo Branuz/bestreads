@@ -18,7 +18,7 @@ public class ReadingTips {
      * @param dbManager Tip database
      */
     public ReadingTips(DatabaseManager dbManager) {
-	this.dbManager = dbManager;
+	    this.dbManager = dbManager;
     }
 
     /** Creates new Tip object and adds it to the cllection
@@ -27,9 +27,9 @@ public class ReadingTips {
      * @param title The title text for the tip
      */
     public void addTip(String url, String title) {
-	Tip newTip = new Tip(url, title);
+	    Tip newTip = new Tip(url, title);
 
-	dbManager.inserIntoDatabase(newTip);
+	    dbManager.inserIntoDatabase(newTip);
     }
 
     /** Delete a tip from database
@@ -37,7 +37,7 @@ public class ReadingTips {
      */
     public void deleteTip(int id) {
 
-	dbManager.deleteFromDatabase(id);
+	    dbManager.deleteFromDatabase(id);
 
     }
 
@@ -45,7 +45,7 @@ public class ReadingTips {
         ArrayList<Integer> ids = new ArrayList<Integer>();
         ArrayList<Tip> tips = new ArrayList<Tip>();
 
-	tips = dbManager.getAllTipsFromDatabase();
+	    tips = dbManager.getAllTipsFromDatabase();
 
         int i = 0;
 
@@ -67,7 +67,7 @@ public class ReadingTips {
         String allTips = "";
         ArrayList<Tip> tips = new ArrayList<Tip>();
 
-	tips = dbManager.getAllTipsFromDatabase();
+	    tips = dbManager.getAllTipsFromDatabase();
 
         int i = 0;
 
