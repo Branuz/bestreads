@@ -5,13 +5,13 @@ import java.util.*;
 import bestreads.databasehandlers.DatabaseManager;
 import io.cucumber.java.bs.I;
 
-/** The ReadingTips object contains a collection of
- *  reading tips of Tip class objects.
+/** The ReadingTips object contains methods to
+ *  handle Tips database
  *
  * @see Tip
  */
 public class ReadingTips {
-    /** Container for the tips */
+    /** Tips are kept in a database */
     private DatabaseManager dbManager;
 
     /** The constructor of the ReadingTips class
