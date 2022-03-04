@@ -77,12 +77,18 @@ public class UserInterface {
      *  into the database
      */
     public void addTip() {
+	
         io.print("Please give the title for the tip");
         String title = io.nextLine();
+	
         io.print("Please add the url for the tip");
         String url = io.nextLine();
+
+        io.print("Please give tags separated by commas for the tip");
+        String tags = io.nextLine();
+	
         if (!title.isBlank() & !url.isBlank()) {
-            this.tips.addTip(url, title);
+            this.tips.addTip(url, title, tags);
             io.print("Awesome! You just added a new tip - " + title + ": " + url);
         } else {
             io.print("Oops! Nothing was added. Both a title and an url are needed.");

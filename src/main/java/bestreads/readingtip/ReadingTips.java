@@ -25,9 +25,10 @@ public class ReadingTips {
      *
      * @param url The network address of the tip
      * @param title The title text for the tip
+     * @param tags Tags separated by commas
      */
-    public void addTip(String url, String title) {
-	    Tip newTip = new Tip(url, title);
+    public void addTip(String url, String title, String tags) {
+	Tip newTip = new Tip(url, title, tags);
 
 	    dbManager.inserIntoDatabase(newTip);
     }
@@ -59,6 +60,7 @@ public class ReadingTips {
         }
         return ids;
     }
+
 
     /** Produces string representation of all the tips.
      * Each line contains one tip

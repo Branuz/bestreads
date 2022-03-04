@@ -7,6 +7,11 @@ import java.util.ArrayList;
 
 import bestreads.readingtip.Tip;
 
+/***********************************************
+ *
+ * THE CLASS IS NOT SQL INJECTION SAFE!
+ *
+ ***********************************************/
 public class DatabaseManager {
 
     /** Constructor for the DatabaseManager class
@@ -20,18 +25,29 @@ public class DatabaseManager {
     }
 			     
     public void inserIntoDatabase(Tip insert) {
+	Integer newTipId = null;	
+        ResultSet rs = null;	
         Statement s  = null;
         String command = "INSERT INTO Tips(Title, Url) VALUES ('" + insert.getTitle() + "','" + insert.getUrl() + "');";
 
         try {
-	        Connection conn = ConnectionManager.getConnection();
+	    Connection conn = ConnectionManager.getConnection();
             s = conn.createStatement();
-            s.execute(command); 
+            s.execute(command);
+	    
+	    rs = s.getGeneratedKeys();
+	    newTipId = rs.getInt("last_insert_rowid()");
+	    
             s.close();
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+	for(String tag: insert.getTags()) {
+	    addTag(tag);
+	    connectTagToTip(newTipId, tag);
+	}
     }
 
     public void deleteFromDatabase(int id) {
@@ -64,7 +80,11 @@ public class DatabaseManager {
                 String title = rs.getString("Title");
                 String url = rs.getString("Url");
                 int id = rs.getInt("id");
-                tips.add(new Tip(url, title, id));
+
+		Tip new_tip = new Tip(url, title, id);
+		ArrayList<String> tags = getTagsByTipId(id);
+		new_tip.setTags(tags);
+                tips.add(new_tip);
             }
 
             rs.close();
@@ -109,8 +129,6 @@ public class DatabaseManager {
     }
 
     /** Add a tag to Tags table
-     *
-     * THE METHOD IS NOT SQL INJECTION SAFE! (AND NEITHER ARE OTHERS)
      *
      * If the tag doesn't already exist in the database, it will be added.
      *
@@ -190,13 +208,12 @@ public class DatabaseManager {
     }
 
 
-    /** Add tag for a Tip
+    /** Add tag to a Tip
      *
-     *
-     * @param Tip to which tag will be added
+     * @param Id of the Tip to which tag will be added
      * @param Tag string
      */
-    public void connectTagToTip(Tip tip, String tag) {
+    public void connectTagToTip(Integer tip_id, String tag) {
 	addTag(tag);
 	Integer tag_id = getTagID(tag);
 
@@ -204,7 +221,7 @@ public class DatabaseManager {
 	    Connection conn = ConnectionManager.getConnection();	    
             Statement s = conn.createStatement();
 	    
-            s.execute("INSERT INTO Tagmap (tip_id, tag_id) VALUES ('" + tip.getId() + "', '" + tag_id + "');");
+            s.execute("INSERT INTO Tagmap (tip_id, tag_id) VALUES ('" + tip_id + "', '" + tag_id + "');");
 
             s.close();
             conn.close();
@@ -245,10 +262,39 @@ public class DatabaseManager {
             e.printStackTrace();
         }
         
-        return tips;
+        return tips;	
+    }
+
+    /** Get all tag strings connected to the give tag ID
+     *
+     * @param id The id of the tag
+     *
+     * @return List of tag strings
+     */
+    public ArrayList<String> getTagsByTipId(Integer tip_id) {
+        ResultSet rs = null;
+        Statement s = null;
+        ArrayList<String> tags = new ArrayList<>();
+        
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            s = conn.createStatement();
+            rs = s.executeQuery("SELECT tag FROM Tags WHERE id IN (SELECT tag_id FROM Tagmap WHERE tip_id = " + tip_id + ");");
+
+            while (rs.next()) {
+                tags.add(rs.getString("tag"));
+            }
+
+            rs.close();
+            s.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return tags;	
 	
     }
-    
     /** Create tables to database, if they don't exist
      */
     public void dataBaseCreate(Connection conn) {
@@ -256,7 +302,7 @@ public class DatabaseManager {
             Statement s = conn.createStatement();
             s.execute("CREATE TABLE  IF NOT EXISTS  Tips (id INTEGER PRIMARY KEY, Title TEXT, Url TEXT);");
             s.execute("CREATE TABLE  IF NOT EXISTS  Tags (id INTEGER PRIMARY KEY, Tag TEXT NOT NULL UNIQUE ON CONFLICT IGNORE);");
-	    s.execute("CREATE TABLE  IF NOT EXISTS  Tagmap (tip_id INTEGER NOT NULL, tag_id INTEGER NOT NULL);"); 	    	    
+	    s.execute("CREATE TABLE  IF NOT EXISTS  Tagmap (tip_id INTEGER NOT NULL, tag_id INTEGER NOT NULL, CONSTRAINT unq UNIQUE (tip_id, tag_id) ON CONFLICT IGNORE);"); 	    	    
 
             s.close();
             conn.close();
