@@ -21,9 +21,9 @@ public class ReadingTips {
 	    this.dbManager = dbManager;
     }
 
-    /** Creates new Tip object and adds it to the cllection
+    /** Creates new Tip object and adds it to the collection
      *
-     * @param url The network adress of the tip
+     * @param url The network address of the tip
      * @param title The title text for the tip
      */
     public void addTip(String url, String title) {
@@ -39,6 +39,10 @@ public class ReadingTips {
 
 	    dbManager.deleteFromDatabase(id);
 
+    }
+    
+    public ArrayList<Tip> searchByTitle(String searchPhrase) {
+        return dbManager.searchByTitle(searchPhrase);
     }
 
     public ArrayList<Integer> getIds() {

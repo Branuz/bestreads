@@ -76,6 +76,33 @@ public class DatabaseManager {
 
         return tips;
     }
+    
+    public ArrayList<Tip> searchByTitle(String searchPhrase) {
+        ResultSet rs = null;
+        Statement s = null;
+        ArrayList<Tip> tips = new ArrayList<>();
+        
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            s = conn.createStatement();
+            rs = s.executeQuery("SELECT * FROM Tips WHERE Title LIKE '%" + searchPhrase + "%';");
+            
+            while (rs.next()) {
+                String title = rs.getString("Title");
+                String url = rs.getString("Url");
+                int id = rs.getInt("id");
+                tips.add(new Tip(url, title, id));
+            }
+
+            rs.close();
+            s.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return tips;
+    }
 
     public void updateInDatabase(Connection conn) {
         //To be made

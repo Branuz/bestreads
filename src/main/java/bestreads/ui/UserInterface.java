@@ -2,6 +2,7 @@ package bestreads.ui;
 import java.util.*;
 
 import bestreads.readingtip.ReadingTips;
+import bestreads.readingtip.Tip;
 
 /** Main class for the command line user interface
  *
@@ -15,7 +16,7 @@ public class UserInterface {
     /** All inputs and outputs are routed via this object*/
     private IO io;
 
-    /** Contsructor for the UserInterface.
+    /** Constructor for the UserInterface.
      *
      * @param io Object for reading user input and writing to user's screen
      * @param tips Object for storing the tips
@@ -35,8 +36,8 @@ public class UserInterface {
         while (true) {
             showCommands();
             String input = io.nextLine();
-            if (!input.matches("([0-3])")) {
-                io.print("Oops! Please choose between 0 and 3.");
+            if (!input.matches("([0-4])")) {
+                io.print("Oops! Please choose between 0 and 4.");
                 continue;
             }
             int command = Integer.valueOf(input);
@@ -55,6 +56,9 @@ public class UserInterface {
             if (command == 3) {
                 deleteTip();
             }
+            if (command == 4) {
+                searchByTitle();
+            }
         }
     }
 
@@ -65,6 +69,7 @@ public class UserInterface {
         io.print("1 -- Add a reading tip");
         io.print("2 -- Show reading tips");
         io.print("3 -- Delete reading tip");
+        io.print("4 -- Search tips by title");
         io.print("0 -- Exit program\n");
     }
 
@@ -112,6 +117,22 @@ public class UserInterface {
             
         } else {
             io.print("Oops! Please give a number only value for the id");
+        }
+    }
+    
+    public void searchByTitle() {
+        io.print("Please provide a search phrase");
+        String searchPhrase = io.nextLine();
+        if (!searchPhrase.isBlank()) {
+            ArrayList<Tip> result = this.tips.searchByTitle(searchPhrase);
+            io.print(result.size() + " search results\n");
+            if (result.size() > 0) {
+                for (Tip tip : result) {
+                    io.print(tip.toString());
+                }
+            }
+        } else {
+            io.print("Oops! Could not complete search with an empty search phrase.");
         }
     }
 }

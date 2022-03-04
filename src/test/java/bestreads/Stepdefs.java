@@ -9,7 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Stepdefs{
+public class Stepdefs {
     private UserInterface ui;
     private UserInputsIOStub io;
     private String command;
@@ -19,7 +19,7 @@ public class Stepdefs{
     public void commandIsGiven(String command) {
         this.command = command;
 
-	DatabaseManager dbManager = new DatabaseManager();	
+	    DatabaseManager dbManager = new DatabaseManager();	
         this.testTips = new ReadingTips(dbManager);
     }
 
@@ -33,7 +33,7 @@ public class Stepdefs{
     @Then("the program should say {string}")
     public void tipAddedSuccessfully(String value) {
 
-        assertEquals(value, io.outputs.get(9));
+        assertEquals(value, io.outputs.get(10));
     }
 
 }
