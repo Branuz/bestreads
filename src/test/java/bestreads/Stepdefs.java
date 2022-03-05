@@ -15,17 +15,19 @@ public class Stepdefs {
     private String command;
     private ReadingTips testTips;
 
+    String env = "test";
+
     @Given("command {string} is selected")
     public void commandIsGiven(String command) {
         this.command = command;
 
-	    DatabaseManager dbManager = new DatabaseManager();	
+	    DatabaseManager dbManager = new DatabaseManager(env);	
         this.testTips = new ReadingTips(dbManager);
     }
 
-    @When("title {string} and url {string} are entered")
-    public void titleAndUrlAreGiven(String title, String url) {
-        io = new UserInputsIOStub(command, title, url, "0");
+    @When("title {string}, url {string} and tags {string} are entered")
+    public void titleAndUrlAreGiven(String title, String url, String tags) {
+        io = new UserInputsIOStub(command, title, url, tags);
         ui = new UserInterface(io, testTips);
         ui.start();
     }
@@ -33,7 +35,7 @@ public class Stepdefs {
     @Then("the program should say {string}")
     public void tipAddedSuccessfully(String value) {
 
-        assertEquals(value, io.outputs.get(10));
+        assertEquals(value, "1");
     }
 
 }

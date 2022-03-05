@@ -7,6 +7,9 @@ package bestreads;
 
 import bestreads.readingtip.Tip;
 import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +22,7 @@ public class TipTest {
     
     @Before
     public void setUp() {
-        this.testTip = new Tip("https://ohjelmistotuotanto-hy-avoin.github.io/", "New Tip");
+        this.testTip = new Tip("https://ohjelmistotuotanto-hy-avoin.github.io/", "New Tip", "Tag");
     }
     
     @Test
@@ -32,7 +35,7 @@ public class TipTest {
     @Test
     public void tipUrlCanBeSet() {
         testTip.setUrl("https://google.com");
-        
+    
         assertEquals("https://google.com", testTip.getUrl());
     }
     
@@ -42,10 +45,19 @@ public class TipTest {
         
         assertEquals("Scrum for Dummies", testTip.getTitle());
     }
+
+    @Test
+    public void tipTagCanBeSet() {
+        ArrayList <String> tags = new ArrayList<>();
+        tags.add("tag1");
+        testTip.setTags(tags);
+        
+        assertEquals(tags, testTip.getTags());
+    }
     
     @Test
     public void tipCanBePrintedCorrectly() {
-        assertEquals("0 : New Tip : https://ohjelmistotuotanto-hy-avoin.github.io/ []", testTip.toString());
+        assertEquals("(id 0) New Tip, https://ohjelmistotuotanto-hy-avoin.github.io/, tags [Tag]", testTip.toString());
     }
 
     @Test

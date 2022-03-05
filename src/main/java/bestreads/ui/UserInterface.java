@@ -45,31 +45,16 @@ public class UserInterface {
                 continue;
             }
             int command = Integer.valueOf(input);
-            if (command == 1) {
-                addTip();
-
-            }
-            if (command == 2) {
-                showTips();
-            }
+            
             if (command == 0) {
-                io.print("\nSee you soon!");
-                io.print("\n@->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->--\n");
+                io.print("\nSee you soon!\n@->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->--\n");
                 break;
             }
-            if (command == 3) {
-                deleteTip();
-            }
-            if (command == 4) {
-                searchByTitle();
-            }
-
-            if (command == 5) {
-                searchByTag();
-            }
+            chooseCommand(command);
         }
     }
 
+ 
     /**
      * Print out all the possible choices
      */
@@ -81,6 +66,28 @@ public class UserInterface {
         io.print("4 -- Search tips by title");
         io.print("5 -- Search tips by tag");
         io.print("0 -- Exit program\n");
+    }
+
+    /**
+     * Choose correct command
+     */
+    public void chooseCommand(int command) {
+        if (command == 1) {
+            addTip();
+        }
+        if (command == 2) {
+            showTips();
+        }
+
+        if (command == 3) {
+            deleteTip();
+        }
+        if (command == 4) {
+            searchByTitle();
+        }
+        if (command == 5) {
+            searchByTag();
+        }
     }
 
     /**
@@ -110,7 +117,7 @@ public class UserInterface {
      * Shows all reading tips in the database
      */
     public void showTips() {
-        io.print("\nVoilá! All your Reading Tips:");
+        io.print("\nVoilá! All your reading tips:");
         io.print(this.tips.toString());
     }
 
@@ -151,11 +158,13 @@ public class UserInterface {
         String searchPhrase = io.nextLine();
         if (!searchPhrase.isBlank()) {
             ArrayList<Tip> result = this.tips.searchByTitle(searchPhrase);
-            io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
             if (result.size() > 0) {
+                io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
                 for (Tip tip : result) {
                     io.print(tip.toString());
                 }
+            } else {
+                io.print("\nOh no! You have " + result.size() + " search result(s)\n");
             }
         } else {
             io.print("Oops! Could not complete search with an empty search phrase.");
@@ -172,11 +181,13 @@ public class UserInterface {
         String searchTag = io.nextLine();
         if (!searchTag.isBlank()) {
             ArrayList<Tip> result = this.tips.searchByTag(searchTag);
-            io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
             if (result.size() > 0) {
+                io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
                 for (Tip tip : result) {
                     io.print(tip.toString());
                 }
+            } else {
+                io.print("\nOh no! You have " + result.size() + " search result(s)\n");
             }
         } else {
             io.print("Oops! Could not complete search without a tag.");

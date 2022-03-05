@@ -17,9 +17,14 @@ public class DatabaseManager {
     /**
      * Constructor for the DatabaseManager class
      */
-    public DatabaseManager() {
+    public DatabaseManager(String env) {
+
         try {
-            dataBaseCreate(ConnectionManager.getConnection());
+            if (env.equals("prod")) {
+                dataBaseCreate(ConnectionManager.getConnection());
+            } else {
+                dataBaseCreate(ConnectionManager.getTestConnection());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,6 +71,21 @@ public class DatabaseManager {
         }
     }
 
+    public void deleteAllFromDatabase() {
+        Statement s = null;
+        String command = String.format("DELETE FROM Tips");
+
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            s = conn.createStatement();
+            s.execute(command);
+            s.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public ArrayList<Tip> getAllTipsFromDatabase() {
         ResultSet rs = null;
         Statement s = null;
@@ -81,10 +101,10 @@ public class DatabaseManager {
                 String url = rs.getString("Url");
                 int id = rs.getInt("id");
 
-                Tip new_tip = new Tip(url, title, id);
+                Tip newtip = new Tip(url, title, id);
                 ArrayList<String> tags = getTagsByTipId(id);
-                new_tip.setTags(tags);
-                tips.add(new_tip);
+                newtip.setTags(tags);
+                tips.add(newtip);
             }
 
             rs.close();
@@ -217,15 +237,15 @@ public class DatabaseManager {
      * @param Id  of the Tip to which tag will be added
      * @param Tag string
      */
-    public void connectTagToTip(Integer tip_id, String tag) {
+    public void connectTagToTip(Integer tipid, String tag) {
         addTag(tag);
-        Integer tag_id = getTagID(tag);
+        Integer tagid = getTagID(tag);
 
         try {
             Connection conn = ConnectionManager.getConnection();
             Statement s = conn.createStatement();
 
-            s.execute("INSERT INTO Tagmap (tip_id, tag_id) VALUES ('" + tip_id + "', '" + tag_id + "');");
+            s.execute("INSERT INTO Tagmap (tip_id, tag_id) VALUES ('" + tipid + "', '" + tagid + "');");
 
             s.close();
             conn.close();
@@ -247,12 +267,13 @@ public class DatabaseManager {
         ResultSet rs = null;
         Statement s = null;
         ArrayList<Tip> tips = new ArrayList<>();
-        Integer tag_id = getTagID(tag);
+        Integer tagid = getTagID(tag);
 
         try {
             Connection conn = ConnectionManager.getConnection();
             s = conn.createStatement();
-            rs = s.executeQuery("SELECT * FROM Tips WHERE id IN (SELECT tip_id FROM Tagmap WHERE tag_id = '" + tag_id + "' )");
+            rs = s.executeQuery(
+                    "SELECT * FROM Tips WHERE id IN (SELECT tip_id FROM Tagmap WHERE tag_id = '" + tagid + "' )");
             while (rs.next()) {
                 String title = rs.getString("Title");
                 String url = rs.getString("Url");
@@ -278,7 +299,7 @@ public class DatabaseManager {
      *
      * @return List of tag strings
      */
-    public ArrayList<String> getTagsByTipId(Integer tip_id) {
+    public ArrayList<String> getTagsByTipId(Integer tipid) {
         ResultSet rs = null;
         Statement s = null;
         ArrayList<String> tags = new ArrayList<>();
@@ -287,7 +308,7 @@ public class DatabaseManager {
             Connection conn = ConnectionManager.getConnection();
             s = conn.createStatement();
             rs = s.executeQuery(
-                    "SELECT Tag FROM Tags WHERE id IN (SELECT tag_id FROM Tagmap WHERE tip_id = " + tip_id + ");");
+                    "SELECT Tag FROM Tags WHERE id IN (SELECT tag_id FROM Tagmap WHERE tip_id = " + tipid + ");");
 
             while (rs.next()) {
                 tags.add(rs.getString("tag"));

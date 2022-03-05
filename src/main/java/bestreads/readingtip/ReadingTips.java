@@ -48,6 +48,16 @@ public class ReadingTips {
     }
 
     /**
+     * Delete all rows from database
+     * 
+     */
+    public void deleteAllRows() {
+
+        dbManager.deleteAllFromDatabase();
+
+    }
+
+    /**
      * Get all used tags from database
      */
     public ArrayList<String> getAllTags() {

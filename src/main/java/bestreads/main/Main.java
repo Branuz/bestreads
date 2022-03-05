@@ -14,9 +14,11 @@ public class Main {
     public String cucumberTestValue;
 
     public static void main(String[] args) {
+        
+        String env = "prod";
+
 	    UserInterfaceIO io = new UserInterfaceIO();
-	
-	    DatabaseManager dbManager = new DatabaseManager();
+	    DatabaseManager dbManager = new DatabaseManager(env);
 	
 	    ReadingTips tips = new ReadingTips(dbManager);
         UserInterface ui = new UserInterface(io, tips);
