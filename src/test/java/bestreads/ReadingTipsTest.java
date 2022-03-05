@@ -16,7 +16,7 @@ public class ReadingTipsTest {
     private ReadingTips testTips;
     private DatabaseManager dbManager;
 
-    String env = "test";
+    String env = "prod";
 
     @Before
     public void setUp() {

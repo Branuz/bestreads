@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class UserInterfaceTest {
     private ReadingTips testTips;
 
-    String env = "test";
+    String env = "prod";
 
     @Before
     public void setUp() {

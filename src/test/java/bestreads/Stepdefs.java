@@ -15,7 +15,7 @@ public class Stepdefs {
     private String command;
     private ReadingTips testTips;
 
-    String env = "test";
+    String env = "prod";
 
     @Given("command {string} is selected")
     public void commandIsGiven(String command) {
