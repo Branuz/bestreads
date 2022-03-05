@@ -47,7 +47,8 @@ public class UserInterface {
             int command = Integer.valueOf(input);
             
             if (command == 0) {
-                io.print("\nSee you soon!\n@->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->--\n");
+                io.print("\nSee you soon!");
+                io.print("\n@->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->--\n");
                 break;
             }
             chooseCommand(command);
