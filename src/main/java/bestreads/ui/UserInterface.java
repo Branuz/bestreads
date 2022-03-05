@@ -35,7 +35,7 @@ public class UserInterface {
     public void start() {
 
         io.print("\n@->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->--\n");
-        io.print("Welcome to Bestreads!");
+        io.print("Welcome to BestReads!");
 
         while (true) {
             showCommands();
@@ -110,7 +110,7 @@ public class UserInterface {
      * Shows all reading tips in the database
      */
     public void showTips() {
-        io.print("Voilá! All your Reading Tips:");
+        io.print("\nVoilá! All your Reading Tips:");
         io.print(this.tips.toString());
     }
 
@@ -124,16 +124,19 @@ public class UserInterface {
         io.print("Please give the id of the tip you want to delete:");
         String id = io.nextLine();
         if (id.matches("(^[0-9]+$)")) {
+            io.print("Are you sure you want to delete tip " + id + "? (y/n))");
+            String confirmed = io.nextLine().toLowerCase();
             int idd = Integer.valueOf(id);
             ArrayList<Integer> ids = new ArrayList<Integer>();
             ids = this.tips.getIds();
-            if (ids.contains(idd)) {
+            if (ids.contains(idd) & confirmed.equals("y")) {
                 this.tips.deleteTip(idd);
                 io.print("Done! Tip with id " + id + " was deleted succesfully");
+            } else if (!confirmed.equals("y")) {
+                io.print("No worries! Nothing was deleted");
             } else {
                 io.print("Oops! Tip with id " + id + " was not found");
             }
-
         } else {
             io.print("Oops! Please give a number only value for the id");
         }
