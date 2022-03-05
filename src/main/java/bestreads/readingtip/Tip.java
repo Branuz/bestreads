@@ -120,10 +120,10 @@ public class Tip {
     /** Converts a Tip to a String
      * 
      * @return String reprsentation of the tip in format:
-     *         "Title text : http://tip.address/"
+     *         "Title text : http://tip.address/ [tag]"
      */
     // @override
     public String toString() {
-	return this.id + " : " + this.title + " : " + this.url + " " + this.tags;
+	return "- id " + this.id + ": " + this.title + ", " + this.url + ", tags " + this.tags;
     }
 }
