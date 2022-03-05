@@ -34,7 +34,7 @@ public class UserInterface {
      */
     public void start() {
 
-        io.print("\nnunununununununununununununununununununununununununununununun\n");
+        io.print("\n@->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->--\n");
         io.print("Welcome to Bestreads!");
 
         while (true) {
@@ -54,7 +54,7 @@ public class UserInterface {
             }
             if (command == 0) {
                 io.print("\nSee you soon!");
-                io.print("\nnunununununununununununununununununununununununununununununun\n");
+                io.print("\n@->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->--\n");
                 break;
             }
             if (command == 3) {
@@ -77,9 +77,9 @@ public class UserInterface {
         io.print("\nPlease choose what you wish to do");
         io.print("1 -- Add a reading tip");
         io.print("2 -- Show reading tips");
-        io.print("3 -- Delete reading tip");
+        io.print("3 -- Delete a reading tip");
         io.print("4 -- Search tips by title");
-        io.print("5 -- Search tips by a tag");
+        io.print("5 -- Search tips by tag");
         io.print("0 -- Exit program\n");
     }
 
@@ -107,7 +107,7 @@ public class UserInterface {
     }
 
     /**
-     * Show all reading tips in the database
+     * Shows all reading tips in the database
      */
     public void showTips() {
         io.print("Voilá! All your Reading Tips:");
@@ -139,6 +139,10 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Searches all tips by a title
+     */
+
     public void searchByTitle() {
         io.print("Please provide a search phrase");
         String searchPhrase = io.nextLine();
@@ -155,6 +159,9 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Searches all tips by a tag
+     */
     public void searchByTag() {
         ArrayList<String> tags = this.tips.getAllTags();
         io.print("Tags found: " + tags);

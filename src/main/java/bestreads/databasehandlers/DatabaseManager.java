@@ -111,7 +111,9 @@ public class DatabaseManager {
                 String title = rs.getString("Title");
                 String url = rs.getString("Url");
                 int id = rs.getInt("id");
-                tips.add(new Tip(url, title, id));
+                Tip newTip = new Tip(url, title, id);
+                newTip.setTags(getTagsByTipId(id));
+                tips.add(newTip);
             }
 
             rs.close();
@@ -255,7 +257,8 @@ public class DatabaseManager {
                 String title = rs.getString("Title");
                 String url = rs.getString("Url");
                 int id = rs.getInt("id");
-                tips.add(new Tip(url, title, id));
+                String tags = getTagsByTipId(id).toString();
+                tips.add(new Tip(url, title, tags));
             }
 
             rs.close();
