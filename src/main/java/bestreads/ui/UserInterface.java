@@ -1,10 +1,12 @@
 package bestreads.ui;
+
 import java.util.*;
 
 import bestreads.readingtip.ReadingTips;
 import bestreads.readingtip.Tip;
 
-/** Main class for the command line user interface
+/**
+ * Main class for the command line user interface
  *
  * @see IO
  * @see UserInterfaceIO
@@ -13,12 +15,13 @@ import bestreads.readingtip.Tip;
 public class UserInterface {
     /** Reading Tips container */
     private ReadingTips tips;
-    /** All inputs and outputs are routed via this object*/
+    /** All inputs and outputs are routed via this object */
     private IO io;
 
-    /** Constructor for the UserInterface.
+    /**
+     * Constructor for the UserInterface.
      *
-     * @param io Object for reading user input and writing to user's screen
+     * @param io   Object for reading user input and writing to user's screen
      * @param tips Object for storing the tips
      */
     public UserInterface(IO io, ReadingTips tips) {
@@ -26,18 +29,19 @@ public class UserInterface {
         this.io = io;
     }
 
-    /** Start the main loop of the user interface
+    /**
+     * Start the main loop of the user interface
      */
     public void start() {
 
         io.print("\nnunununununununununununununununununununununununununununununun\n");
         io.print("Welcome to Bestreads!");
-        
+
         while (true) {
             showCommands();
             String input = io.nextLine();
-            if (!input.matches("([0-4])")) {
-                io.print("Oops! Please choose between 0 and 4.");
+            if (!input.matches("([0-5])")) {
+                io.print("Oops! Please choose between 0 and 5.");
                 continue;
             }
             int command = Integer.valueOf(input);
@@ -59,10 +63,15 @@ public class UserInterface {
             if (command == 4) {
                 searchByTitle();
             }
+
+            if (command == 5) {
+                searchByTag();
+            }
         }
     }
 
-    /** Print out all the possible choices
+    /**
+     * Print out all the possible choices
      */
     public void showCommands() {
         io.print("\nPlease choose what you wish to do");
@@ -70,45 +79,49 @@ public class UserInterface {
         io.print("2 -- Show reading tips");
         io.print("3 -- Delete reading tip");
         io.print("4 -- Search tips by title");
+        io.print("5 -- Search tips by a tag");
         io.print("0 -- Exit program\n");
     }
 
-    /** Asks needed information from user and create a new
-     *  into the database
+    /**
+     * Asks needed information from user and create a new
+     * into the database
      */
     public void addTip() {
-	
+
         io.print("Please give the title for the tip");
         String title = io.nextLine();
-	
+
         io.print("Please add the url for the tip");
         String url = io.nextLine();
 
         io.print("Please give tags separated by commas for the tip");
-        String tags = io.nextLine();
-	
+        String tags = io.nextLine().toLowerCase();
+
         if (!title.isBlank() & !url.isBlank()) {
             this.tips.addTip(url, title, tags);
-            io.print("Awesome! You just added a new tip - " + title + ": " + url);
+            io.print("\nAwesome! You just added a new tip: \n" + title + ": " + url + " with tags " + tags);
         } else {
-            io.print("Oops! Nothing was added. Both a title and an url are needed.");
+            io.print("\nOops! Nothing was added. Both a title and an url are needed.");
         }
     }
 
-    /** Show all reading tips in the database
+    /**
+     * Show all reading tips in the database
      */
     public void showTips() {
-        io.print("Your Reading Tips:");
+        io.print("Voilá! All your Reading Tips:");
         io.print(this.tips.toString());
     }
 
-    /** Asks needed information from user and 
-     *  deletes selected id from the database
+    /**
+     * Asks needed information from user and
+     * deletes selected id from the database
      */
 
     public void deleteTip() {
         showTips();
-        io.print("Give the id of the Reading Tip you want to delete:");
+        io.print("Please give the id of the tip you want to delete:");
         String id = io.nextLine();
         if (id.matches("(^[0-9]+$)")) {
             int idd = Integer.valueOf(id);
@@ -116,22 +129,22 @@ public class UserInterface {
             ids = this.tips.getIds();
             if (ids.contains(idd)) {
                 this.tips.deleteTip(idd);
-                io.print("Tip with id: " + id + " deleted succesfully");
+                io.print("Done! Tip with id " + id + " was deleted succesfully");
             } else {
-                io.print("Tip with id: " + id + " not found");
+                io.print("Oops! Tip with id " + id + " was not found");
             }
-            
+
         } else {
             io.print("Oops! Please give a number only value for the id");
         }
     }
-    
+
     public void searchByTitle() {
         io.print("Please provide a search phrase");
         String searchPhrase = io.nextLine();
         if (!searchPhrase.isBlank()) {
             ArrayList<Tip> result = this.tips.searchByTitle(searchPhrase);
-            io.print(result.size() + " search results\n");
+            io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
             if (result.size() > 0) {
                 for (Tip tip : result) {
                     io.print(tip.toString());
@@ -139,6 +152,24 @@ public class UserInterface {
             }
         } else {
             io.print("Oops! Could not complete search with an empty search phrase.");
+        }
+    }
+
+    public void searchByTag() {
+        ArrayList<String> tags = this.tips.getAllTags();
+        io.print("Tags found: " + tags);
+        io.print("Please name the tag you wish to search by");
+        String searchTag = io.nextLine();
+        if (!searchTag.isBlank()) {
+            ArrayList<Tip> result = this.tips.searchByTag(searchTag);
+            io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
+            if (result.size() > 0) {
+                for (Tip tip : result) {
+                    io.print(tip.toString());
+                }
+            }
+        } else {
+            io.print("Oops! Could not complete search without a tag.");
         }
     }
 }
