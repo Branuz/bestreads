@@ -67,12 +67,14 @@ public class DatabaseManager {
 
     public void deleteFromDatabase(int id) {
         Statement s = null;
-        String command = String.format("DELETE FROM Tips WHERE id=%s;", id);
+        String deleteTipId = String.format("DELETE FROM Tips WHERE id=%s;", id);
+        String deleteTagmapId = String.format("DELETE FROM Tagmap WHERE tip_id=%s;", id);
 
         try {
             Connection conn = ConnectionManager.getConnection();
             s = conn.createStatement();
-            s.execute(command);
+            s.execute(deleteTipId);
+            s.execute(deleteTagmapId);
             s.close();
             conn.close();
         } catch (Exception e) {
