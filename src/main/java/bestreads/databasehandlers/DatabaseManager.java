@@ -17,19 +17,28 @@ public class DatabaseManager {
     /**
      * Constructor for the DatabaseManager class
      */
-    public DatabaseManager(String env) {
+    public DatabaseManager() {
 
         try {
-            if (env.equals("prod")) {
+
                 dataBaseCreate(ConnectionManager.getConnection());
-            } else {
-                dataBaseCreate(ConnectionManager.getTestConnection());
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public DatabaseManager(String dbFileName) {
+
+        try {
+
+                dataBaseCreate(ConnectionManager.getConnection(dbFileName));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void inserIntoDatabase(Tip insert) {
         Integer newTipId = null;
         ResultSet rs = null;

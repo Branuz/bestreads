@@ -15,10 +15,8 @@ public class Main {
 
     public static void main(String[] args) {
         
-        String env = "prod";
-
 	    UserInterfaceIO io = new UserInterfaceIO();
-	    DatabaseManager dbManager = new DatabaseManager(env);
+	    DatabaseManager dbManager = new DatabaseManager();
 	
 	    ReadingTips tips = new ReadingTips(dbManager);
         UserInterface ui = new UserInterface(io, tips);
