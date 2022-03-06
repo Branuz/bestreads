@@ -56,4 +56,25 @@ public class Stepdefs {
         assertEquals(value, io.outputs.get(11));
     }
 
+    @When("tip {string} is entered with confirmation {string}")
+    public void tipIsEnteredWithConfirmation(String string, String string2) {
+        io = new UserInputsIOStub(command, string, string2);
+        ui = new UserInterface(io, testTips);
+        ui.start();
+    }
+
+    @Then("the program should confirm deletion with {string}")
+    public void theProgramShouldConfirmDeletionWith(String string) {
+        String expected = "Done! Tip with id 1 was deleted succesfully";
+        String actual = string;
+        assertEquals(expected, actual);
+    }
+
+    @Then("the program should fail deletion with error message {string}")
+    public void theProgramShouldFailDeletionWithErrorMessage(String string) {
+        String expected = "Oops! Tip with id 999 was not found";
+        String actual = string;
+        assertEquals(expected, actual);
+    }
+
 }
