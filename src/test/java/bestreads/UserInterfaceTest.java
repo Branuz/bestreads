@@ -42,11 +42,20 @@ public class UserInterfaceTest {
     }
     
     @Test
+    public void searchBTagCanBeSelected() {
+        UserInputsIOStub io = new UserInputsIOStub("5", "tags", "0");
+        new UserInterface(io, testTips).start();
+        assertTrue(io.outputs.get(9).contains("Tags found:"));
+        
+    }
+        
+    @Test
     public void searchByTitleCanBeSelected() {
         UserInputsIOStub io = new UserInputsIOStub("4", "searching", "0");
         new UserInterface(io, testTips).start();
         assertEquals("Please provide a search phrase", io.outputs.get(9));
     }
+
 
     @Test
     public void tipCanBeDeleted() {
