@@ -1,5 +1,7 @@
 package bestreads;
 
+import java.io.File;
+
 import static org.junit.Assert.assertEquals;
 
 import bestreads.readingtip.ReadingTips;
@@ -15,13 +17,16 @@ public class Stepdefs {
     private String command;
     private ReadingTips testTips;
 
-    String env = "prod";
+    String dbFileName = "bestreadstest.db";        
 
     @Given("command {string} is selected")
     public void commandIsGiven(String command) {
         this.command = command;
 
-	    DatabaseManager dbManager = new DatabaseManager(env);	
+	File dbFile = new File(dbFileName);
+	dbFile.delete();
+	
+	    DatabaseManager dbManager = new DatabaseManager(dbFileName);	
         this.testTips = new ReadingTips(dbManager);
     }
 

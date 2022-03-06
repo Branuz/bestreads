@@ -1,5 +1,7 @@
 package bestreads;
 
+import java.io.File;
+
 import bestreads.readingtip.ReadingTips;
 import bestreads.databasehandlers.DatabaseManager;
 import bestreads.ui.UserInterface;
@@ -10,11 +12,14 @@ import static org.junit.Assert.*;
 public class UserInterfaceTest {
     private ReadingTips testTips;
 
-    String env = "prod";
+    String dbFileName = "bestreadstest.db";    
 
     @Before
     public void setUp() {
-	    DatabaseManager dbManager = new DatabaseManager(env);	
+	File dbFile = new File(dbFileName);
+	dbFile.delete();
+	
+	    DatabaseManager dbManager = new DatabaseManager(dbFileName);	
 	    this.testTips = new ReadingTips(dbManager);
         dbManager.deleteAllFromDatabase();
     }
