@@ -16,23 +16,38 @@ You can run the tests with the following command.
 ./gradlew test
 ```
 
+
+You can run the checkstyles with the following command.
+  
+```
+./gradlew checkstyleMain
+```
+
+You can run the jacoco repoirt with the following command.
+
+```
+./gradlew jacocoTestReport
+```
+
 <h2>Features and how to use them</h2>
 
-  - [x] User can add a reading tip with a title and an url (write command "1", both title and url must have values)
+BestReads is designed for adding and searching reading tips. The program is used via terminal. Tips are stored to a database (SQLite).
+
+  - [x] User can add a reading tip with a title, an url and related tags (write command "1", both title and url must have values)
   - [x] User can list all the tips she has added (write command "2")
-  - [x] User can exit the program (write command "3")
+  - [x] User can delete a tip by giving the id (write command "3")
+  - [x] User can search tips by title (write command "4")
+  - [x] User can search tips by a tag (write command "5")
+  - [x] User can exit the program (write command "0")
 
-At the moment tips are not stored to any database or file. User can access them only during session.
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/156927419-88bf9c05-a830-4996-9d95-9cd4b2ffc667.png">
 
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/155896366-85f7214d-f02b-4f38-9d35-2baa078d012f.png">
-
-
-<h2>Product backlog</h2>
+<h2>Product Backlog</h2>
 
 [BestReads product backlog](https://github.com/Branuz/bestreads/projects/1)
 
-<h2>Definition of done</h2>
+<h2>Definition of Done</h2>
 
 * The acceptance criteria of the user story are met.
 * The functionality has been designed to be a logical part of the software.
@@ -46,12 +61,17 @@ At the moment tips are not stored to any database or file. User can access them 
 * Changes have been pushed to GitHub.
   * A pull request has been created when adding new functionalities (i.e. not when adding minor fixes or tests)
   * The pull request has been reviewed and accepted by a team member
-  
-  
+ 
+
 <h2>BurnDown Charts</h2>
 
 [BestReads BurnDown](https://docs.google.com/spreadsheets/d/1fbggwojJdrjL_2Upwlk6DzCwIKgE4XGpoJbnYs0loH4/edit?usp=sharing)
 
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/155896824-27882a78-274c-49c4-a112-4912e830fd20.png">
+
+<h2>Final report of the project</h2>
+  
+[Team's final report](https://docs.google.com/document/d/1hsk3RRMTLlUdPTCcBUK8I9rnN_STo6GY0MT_oH8QF18/edit?usp=sharing)
+
 
 
