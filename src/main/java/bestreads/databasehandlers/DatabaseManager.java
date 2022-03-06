@@ -158,7 +158,7 @@ public class DatabaseManager {
      * @param tag The tag to be added should contain only letters and numbers
      */
     public void addTag(String tag) {
-	tag = tag.toLowerCase();
+	    tag = tag.toLowerCase();
 	
         try {
             Connection conn = ConnectionManager.getConnection();
@@ -266,7 +266,7 @@ public class DatabaseManager {
      * @return List of Tips
      */
     public ArrayList<Tip> searchByTag(String tag) {
-	tag = tag.toLowerCase();
+	    tag = tag.toLowerCase();
 	
         ResultSet rs = null;
         Statement s = null;

@@ -84,15 +84,15 @@ public class Tip {
      * @param tag The tag
      */
     public void addTag(String tag) {
-	tag = tag.toLowerCase();
+	    tag = tag.toLowerCase();
 	
         if (this.tags.contains(tag)) {
             return;
         }
 
-	if (this.tags.size() >= 5) {
-	    return;
-	}
+	    if (this.tags.size() >= 5) {
+	        return;
+	    }
 
         this.tags.add(tag);
 	
