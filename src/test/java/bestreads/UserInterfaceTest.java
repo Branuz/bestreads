@@ -55,7 +55,40 @@ public class UserInterfaceTest {
         new UserInterface(io, testTips).start();
         assertEquals("Please provide a search phrase", io.outputs.get(9));
     }
-
+    
+    @Test
+    public void searchByTitleResultsArePrinted() {
+        String[] testInputs = {
+            "1", //Add tip
+            "title",
+            "url",
+            "tags",
+            "4", //Search by title
+            "ti",
+            "0"
+        };
+        UserInputsIOStub io = new UserInputsIOStub(testInputs);
+        new UserInterface(io, testTips).start();
+        assertEquals("\nTa-da! You have 1 search result(s)\n", io.outputs.get(21));
+        
+    }
+    
+    @Test
+    public void searchByEmptyTitlePrintsOops() {
+        String[] testInputs = {
+            "1", //Add tip
+            "title",
+            "url",
+            "tags",
+            "4", //Search by title
+            "",
+            "0"
+        };
+        UserInputsIOStub io = new UserInputsIOStub(testInputs);
+        new UserInterface(io, testTips).start();
+        assertEquals("Oops! Could not complete search with an empty search phrase.", io.outputs.get(21));
+        
+    }
 
     @Test
     public void tipCanBeDeleted() {
