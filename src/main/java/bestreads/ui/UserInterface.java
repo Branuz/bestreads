@@ -106,7 +106,7 @@ public class UserInterface {
         io.print("Please give tags separated by commas for the tip");
         String tags = io.nextLine().toLowerCase();
 
-        if (!title.isBlank() & !url.isBlank()) {
+        if (!title.isBlank() && !url.isBlank()) {
             this.tips.addTip(url, title, tags);
             io.print("\nAwesome! You just added a new tip: \n" + title + ": " + url + " with tags " + tags);
         } else {
