@@ -17,16 +17,16 @@ public class Stepdefs {
     private String command;
     private ReadingTips testTips;
 
-    String dbFileName = "bestreadstest.db";        
+    String dbFileName = "bestreadstest.db";
 
     @Given("command {string} is selected")
     public void commandIsGiven(String command) {
         this.command = command;
 
-	File dbFile = new File(dbFileName);
-	dbFile.delete();
-	
-	    DatabaseManager dbManager = new DatabaseManager(dbFileName);	
+        File dbFile = new File(dbFileName);
+        dbFile.delete();
+
+        DatabaseManager dbManager = new DatabaseManager(dbFileName);
         this.testTips = new ReadingTips(dbManager);
     }
 
@@ -44,7 +44,7 @@ public class Stepdefs {
     }
 
     @When("search criteria {string} is entered")
-    public void searchTagGiven( String criteria) {
+    public void searchTagGiven(String criteria) {
         io = new UserInputsIOStub(command, criteria);
         ui = new UserInterface(io, testTips);
         ui.start();
@@ -55,6 +55,5 @@ public class Stepdefs {
         String value = "\n" + result + "\n";
         assertEquals(value, io.outputs.get(11));
     }
-
 
 }

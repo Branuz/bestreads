@@ -21,7 +21,7 @@ public class DatabaseManager {
 
         try {
 
-                dataBaseCreate(ConnectionManager.getConnection());
+            dataBaseCreate(ConnectionManager.getConnection());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,13 +32,13 @@ public class DatabaseManager {
 
         try {
 
-                dataBaseCreate(ConnectionManager.getConnection(dbFileName));
+            dataBaseCreate(ConnectionManager.getConnection(dbFileName));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public void inserIntoDatabase(Tip insert) {
         Integer newTipId = null;
         ResultSet rs = null;
@@ -169,8 +169,8 @@ public class DatabaseManager {
      * @param tag The tag to be added should contain only letters and numbers
      */
     public void addTag(String tag) {
-	    tag = tag.toLowerCase();
-	
+        tag = tag.toLowerCase();
+
         try {
             Connection conn = ConnectionManager.getConnection();
             Statement s = conn.createStatement();
@@ -230,10 +230,10 @@ public class DatabaseManager {
             s = conn.createStatement();
             rs = s.executeQuery("SELECT id FROM Tags WHERE tag = '" + tag + "';");
 
-	    if (rs.isClosed()) {
-		return null;
-	    }
-	    
+            if (rs.isClosed()) {
+                return null;
+            }
+
             rs.next();
             id = Integer.parseInt(rs.getString("id"));
 
@@ -281,8 +281,8 @@ public class DatabaseManager {
      * @return List of Tips
      */
     public ArrayList<Tip> searchByTag(String tag) {
-	    tag = tag.toLowerCase();
-	
+        tag = tag.toLowerCase();
+
         ResultSet rs = null;
         Statement s = null;
         ArrayList<Tip> tips = new ArrayList<>();
