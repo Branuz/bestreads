@@ -5,7 +5,7 @@ import bestreads.databasehandlers.DatabaseManager;
 import bestreads.readingtip.Tip;
 
 import java.util.ArrayList;
-import java.io.File;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -23,8 +23,6 @@ public class ReadingTipsTest {
 
     @Before
     public void setUp() {
-	File dbFile = new File(dbFileName);
-	dbFile.delete();
 	
 	    this.dbManager = new DatabaseManager(dbFileName);
 	    this.testTips = new ReadingTips(dbManager);

@@ -1,6 +1,6 @@
 package bestreads;
 
-import java.io.File;
+
 
 import bestreads.readingtip.ReadingTips;
 import bestreads.databasehandlers.DatabaseManager;
@@ -16,8 +16,6 @@ public class UserInterfaceTest {
 
     @Before
     public void setUp() {
-	File dbFile = new File(dbFileName);
-	dbFile.delete();
 	
 	    DatabaseManager dbManager = new DatabaseManager(dbFileName);	
 	    this.testTips = new ReadingTips(dbManager);

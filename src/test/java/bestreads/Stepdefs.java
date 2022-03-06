@@ -1,6 +1,5 @@
 package bestreads;
 
-import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,9 +21,6 @@ public class Stepdefs {
     @Given("command {string} is selected")
     public void commandIsGiven(String command) {
         this.command = command;
-
-        File dbFile = new File(dbFileName);
-        dbFile.delete();
 
         DatabaseManager dbManager = new DatabaseManager(dbFileName);
         this.testTips = new ReadingTips(dbManager);
