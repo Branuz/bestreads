@@ -3,7 +3,10 @@ package bestreads;
 import bestreads.readingtip.ReadingTips;
 import bestreads.databasehandlers.DatabaseManager;
 import bestreads.readingtip.Tip;
+
 import java.util.ArrayList;
+import java.io.File;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -16,11 +19,14 @@ public class ReadingTipsTest {
     private ReadingTips testTips;
     private DatabaseManager dbManager;
 
-    String env = "prod";
+    String dbFileName = "bestreadstest.db";
 
     @Before
     public void setUp() {
-	    this.dbManager = new DatabaseManager(env);
+	File dbFile = new File(dbFileName);
+	dbFile.delete();
+	
+	    this.dbManager = new DatabaseManager(dbFileName);
 	    this.testTips = new ReadingTips(dbManager);
     }
 
@@ -32,7 +38,7 @@ public class ReadingTipsTest {
 
     @Test
     public void tipsCanBeCreated() {
-	    DatabaseManager dbManager = new DatabaseManager(env);
+	    DatabaseManager dbManager = new DatabaseManager(dbFileName);
 	    assertNotNull(new ReadingTips(dbManager));
     }
 
