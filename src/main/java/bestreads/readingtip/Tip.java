@@ -77,12 +77,25 @@ public class Tip {
         this.id = id;
     }
 
+    /** Add a tag to the tip
+     * No duplicate tags are created, and if there's 5 or more tags in the tip
+     * allready, it will not be added.
+     *
+     * @param tag The tag
+     */
     public void addTag(String tag) {
+	tag = tag.toLowerCase();
+	
         if (this.tags.contains(tag)) {
             return;
         }
 
+	if (this.tags.size() >= 5) {
+	    return;
+	}
+
         this.tags.add(tag);
+	
     }
 
     public void setTags(ArrayList<String> tags) {
@@ -93,6 +106,10 @@ public class Tip {
         return this.tags;
     }
 
+    /** Add all the tags in a string, separated by comma, to a tag
+     *
+     * @param tag String containing tags: "firsttag, secondtag, third"
+     */
     public void addTagsFromString(String tags) {
         String[] arrayOfStrings = tags.split(",");
 
