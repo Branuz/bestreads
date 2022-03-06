@@ -47,5 +47,68 @@ public class UserInterfaceTest {
         new UserInterface(io, testTips).start();
         assertEquals("Please provide a search phrase", io.outputs.get(9));
     }
+
+    @Test
+    public void tipCanBeDeleted() {
+        String[] testInputs = {
+            "1", //Add tip
+            "title",
+            "url",
+            "tags",
+            "3", //Delete tip
+            "1",
+            "y",
+            "0"
+        };
+        UserInputsIOStub io = new UserInputsIOStub(testInputs);
+        new UserInterface(io, testTips).start();
+        assertEquals("Done! Tip with id 1 was deleted succesfully", io.outputs.get(24));
+    }
+
+    @Test
+    public void tipIdDeletionWithInvalidInteger() {
+        String[] testInputs = {
+            "3",
+            "notAnInteger",
+            "0"
+        };
+        UserInputsIOStub io = new UserInputsIOStub(testInputs);
+        new UserInterface(io, testTips).start();
+        assertEquals("Oops! Please give a number only value for the id", io.outputs.get(12));
+    }
+
+    @Test
+    public void tipDeletionCancelled() {
+        String[] testInputs = {
+            "1", //Add tip
+            "title",
+            "url",
+            "tags",
+            "3", //Delete tip
+            "1",
+            "n",
+            "0"
+        };
+        UserInputsIOStub io = new UserInputsIOStub(testInputs);
+        new UserInterface(io, testTips).start();
+        assertEquals("No worries! Nothing was deleted", io.outputs.get(24));
+    }
+
+    @Test
+    public void tipCantBeDeletedWithInvalidId() {
+        String[] testInputs = {
+            "1", //Add tip
+            "title",
+            "url",
+            "tags",
+            "3", //Delete tip
+            "9",
+            "y",
+            "0"
+        };
+        UserInputsIOStub io = new UserInputsIOStub(testInputs);
+        new UserInterface(io, testTips).start();
+        assertEquals("Oops! Tip with id 9 was not found", io.outputs.get(24));
+    }
 }
 
