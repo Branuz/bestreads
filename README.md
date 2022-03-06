@@ -31,7 +31,7 @@ You can run the jacoco repoirt with the following command.
 
 <h2>Features</h2>
 
-BestReads is designed for adding and searching reading tips. The program is used via terminal. Tips are stored to a database (SQLite).
+BestReads is designed for storing and searching reading tips. Tips are stored to a database (SQLite). The Java based program is used via terminal. 
 
   - [x] User can add a reading tip with a title, an url and related tags (write command "1")
   - [x] User can list all the tips she has added (write command "2")
