@@ -38,4 +38,18 @@ public class Stepdefs {
         assertEquals(value, io.outputs.get(12));
     }
 
+    @When("search criteria {string} is entered")
+    public void searchTagGiven( String criteria) {
+        io = new UserInputsIOStub(command, criteria);
+        ui = new UserInterface(io, testTips);
+        ui.start();
+    }
+
+    @Then("the program should say {string}")
+    public void searchByTagSuccessfull(String result) {
+        String value = "\n" + result + "\n";
+        assertEquals(value, io.outputs.get(11));
+    }
+
+
 }
