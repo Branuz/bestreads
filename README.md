@@ -29,11 +29,11 @@ You can run the jacoco repoirt with the following command.
 ./gradlew jacocoTestReport
 ```
 
-<h2>Features and how to use them</h2>
+<h2>Features</h2>
 
 BestReads is designed for adding and searching reading tips. The program is used via terminal. Tips are stored to a database (SQLite).
 
-  - [x] User can add a reading tip with a title, an url and related tags (write command "1", both title and url must have values)
+  - [x] User can add a reading tip with a title, an url and related tags (write command "1")
   - [x] User can list all the tips she has added (write command "2")
   - [x] User can delete a tip by giving the id (write command "3")
   - [x] User can search tips by title (write command "4")
