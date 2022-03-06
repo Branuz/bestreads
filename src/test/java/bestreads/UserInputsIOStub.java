@@ -19,6 +19,9 @@ public class UserInputsIOStub implements IO {
     }
 
     public String nextLine() {
+        if (userInputs.length == inputCount) {
+            return "0";
+        }
         String input = this.userInputs[inputCount];
         inputCount++;
         return input;

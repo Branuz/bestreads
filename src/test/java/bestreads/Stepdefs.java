@@ -32,10 +32,10 @@ public class Stepdefs {
         ui.start();
     }
 
-    @Then("the program should say {string}")
-    public void tipAddedSuccessfully(String value) {
-
-        assertEquals(value, "1");
+    @Then("the program should say {string} and {string}")
+    public void tipAddedSuccessfully(String firstLine, String secondLine) {
+        String value = "\n" + firstLine + "\n" + secondLine;
+        assertEquals(value, io.outputs.get(12));
     }
 
 }

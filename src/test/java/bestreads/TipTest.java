@@ -57,7 +57,7 @@ public class TipTest {
     
     @Test
     public void tipCanBePrintedCorrectly() {
-        assertEquals("(id 0) New Tip, https://ohjelmistotuotanto-hy-avoin.github.io/, tags [Tag]", testTip.toString());
+        assertEquals("(id 0) New Tip, https://ohjelmistotuotanto-hy-avoin.github.io/, tags [tag]", testTip.toString());
     }
 
     @Test
