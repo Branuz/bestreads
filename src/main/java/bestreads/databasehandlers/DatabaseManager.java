@@ -219,6 +219,10 @@ public class DatabaseManager {
             s = conn.createStatement();
             rs = s.executeQuery("SELECT id FROM Tags WHERE tag = '" + tag + "';");
 
+	    if (rs.isClosed()) {
+		return null;
+	    }
+	    
             rs.next();
             id = Integer.parseInt(rs.getString("id"));
 
