@@ -16,11 +16,11 @@ public class ConnectionManager {
      * @throws Exception
      */
     public static Connection getConnection() throws Exception {
-	if (fileName == null) {
-	    return getConnection(defaultFileName);
-	}
+        if (fileName == null) {
+            return getConnection(defaultFileName);
+        }
 
-	return getConnection(fileName);
+        return getConnection(fileName);
 
     }
 
@@ -34,7 +34,7 @@ public class ConnectionManager {
      */
     public static Connection getConnection(String dbFileName) throws Exception {
 	
-	fileName = new String(dbFileName);
+	    fileName = new String(dbFileName);
 	
         String url = "jdbc:sqlite:" + dbFileName;
         con = DriverManager.getConnection(url);
