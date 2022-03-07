@@ -23,9 +23,9 @@ public class ReadingTipsTest {
 
     @Before
     public void setUp() {
-	File dbFile = new File(dbFileName);
-	dbFile.delete();
-	
+        File dbFile = new File(dbFileName);
+        dbFile.delete();
+        
 	    this.dbManager = new DatabaseManager(dbFileName);
 	    this.testTips = new ReadingTips(dbManager);
     }
@@ -74,7 +74,7 @@ public class ReadingTipsTest {
     
     @Test
     public void searchByTitleReturnsEmptyIfNoResults() {
-        testTips.addTip("A", "first result","tag1");
+        testTips.addTip("A", "first result", "tag1");
         testTips.addTip("B", "second result", "tag2");
         
         ArrayList<Tip> searchResults = testTips.searchByTitle("find");
@@ -83,17 +83,17 @@ public class ReadingTipsTest {
 
     @Test
     public void creatingTipWithOneTagWorks() {
-	testTips.addTip("A", "first result", "tag1");
+	    testTips.addTip("A", "first result", "tag1");
 
-	assertTrue(testTips.toString().contains("tag1"));	
+	    assertTrue(testTips.toString().contains("tag1"));	
     }
 
     @Test
     public void creatingTipWithTwoTagsWorks() {
-	testTips.addTip("A", "first result", "tag1, tag2");
+        testTips.addTip("A", "first result", "tag1, tag2");
 
-	assertTrue(testTips.toString().contains("tag1"));
-	assertTrue(testTips.toString().contains("tag1"));	
+        assertTrue(testTips.toString().contains("tag1"));
+        assertTrue(testTips.toString().contains("tag1"));	
     }
     
     @Test
@@ -108,7 +108,7 @@ public class ReadingTipsTest {
 
     @Test
     public void searchByTagReturnsEmptyIfNoResults() {
-        testTips.addTip("A", "first result","tag1");
+        testTips.addTip("A", "first result", "tag1");
         testTips.addTip("B", "second result", "tag2");
         
         ArrayList<Tip> searchResults = testTips.searchByTag("tag3");
@@ -117,7 +117,7 @@ public class ReadingTipsTest {
 
     @Test
     public void deleteAllTipsWorks() {
-        testTips.addTip("A", "first result","tag1");
+        testTips.addTip("A", "first result", "tag1");
         testTips.addTip("B", "second result", "tag2");
         ArrayList<Integer> tips = testTips.getIds();
         assertEquals(2, tips.size());

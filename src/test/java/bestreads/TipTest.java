@@ -49,7 +49,7 @@ public class TipTest {
 
     @Test
     public void tipTagCanBeSet() {
-        ArrayList <String> tags = new ArrayList<>();
+        ArrayList<String> tags = new ArrayList<>();
         tags.add("tag1");
         testTip.setTags(tags);
         
