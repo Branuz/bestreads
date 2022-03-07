@@ -59,7 +59,7 @@ public class ReadingTipsTest {
 
     }
     
- @Test
+    @Test
     public void searchByTitleGivesCorrectResults() {
         testTips.addTip("A", "first result", "tag1");
         testTips.addTip("B", "second result", "tag2");
@@ -81,6 +81,21 @@ public class ReadingTipsTest {
         assertEquals(0, searchResults.size());
     }
 
+    @Test
+    public void creatingTipWithOneTagWorks() {
+	testTips.addTip("A", "first result", "tag1");
+
+	assertTrue(testTips.toString().contains("tag1"));	
+    }
+
+    @Test
+    public void creatingTipWithTwoTagsWorks() {
+	testTips.addTip("A", "first result", "tag1, tag2");
+
+	assertTrue(testTips.toString().contains("tag1"));
+	assertTrue(testTips.toString().contains("tag1"));	
+    }
+    
     @Test
     public void searchByTagGivesCorrectResults() {
         testTips.addTip("D", "first result", "tag0");
