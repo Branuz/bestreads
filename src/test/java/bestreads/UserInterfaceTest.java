@@ -150,7 +150,6 @@ public class UserInterfaceTest {
             "tags",
             "3", //Delete tip
             "9",
-            "y",
             "0"
         };
         UserInputsIOStub io = new UserInputsIOStub(testInputs);

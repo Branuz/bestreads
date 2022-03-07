@@ -47,6 +47,13 @@ public class Tip {
         addTagsFromString(tags);
     }
 
+    public Tip(String url, String title, int id, String tags) {
+
+        this(url, title);
+        this.id = id;
+        addTagsFromString(tags);
+    }
+
     public Tip(String url, String title, int id) {
         this.url = url;
         this.title = title;

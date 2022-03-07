@@ -298,7 +298,7 @@ public class DatabaseManager {
                 String url = rs.getString("Url");
                 int id = rs.getInt("id");
                 String tags = getTagsByTipId(id).toString();
-                tips.add(new Tip(url, title, tags));
+                tips.add(new Tip(url, title, id, tags));
             }
 
             rs.close();

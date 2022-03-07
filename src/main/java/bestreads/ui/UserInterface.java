@@ -132,18 +132,21 @@ public class UserInterface {
         io.print("Please give the id of the tip you want to delete:");
         String id = io.nextLine();
         if (id.matches("(^[0-9]+$)")) {
-            io.print("Are you sure you want to delete tip " + id + "? (y/n))");
-            String confirmed = io.nextLine().toLowerCase();
             int idd = Integer.valueOf(id);
             ArrayList<Integer> ids = new ArrayList<Integer>();
             ids = this.tips.getIds();
-            if (ids.contains(idd) & confirmed.equals("y")) {
-                this.tips.deleteTip(idd);
-                io.print("Done! Tip with id " + id + " was deleted succesfully");
-            } else if (!confirmed.equals("y")) {
-                io.print("No worries! Nothing was deleted");
-            } else {
+            if(!ids.contains(idd)){
                 io.print("Oops! Tip with id " + id + " was not found");
+            }else{
+                io.print("Are you sure you want to delete tip " + id + "? (y/n))");
+                String confirmed = io.nextLine().toLowerCase();
+
+                if (confirmed.equals("y")) {
+                    this.tips.deleteTip(idd);
+                    io.print("Done! Tip with id " + id + " was deleted succesfully");
+                } else {
+                    io.print("No worries! Nothing was deleted");
+                }
             }
         } else {
             io.print("Oops! Please give a number only value for the id");

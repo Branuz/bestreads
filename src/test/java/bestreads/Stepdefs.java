@@ -66,6 +66,13 @@ public class Stepdefs {
         ui.start();
     }
 
+    @When("tip {string} is entered")
+    public void tipIsEntered(String string) {
+        io = new UserInputsIOStub(command, string);
+        ui = new UserInterface(io, testTips);
+        ui.start();
+    }
+
     @Then("the program should confirm deletion with {string}")
     public void theProgramShouldConfirmDeletionWith(String string) {
         String expected = "Done! Tip with id 1 was deleted succesfully";
