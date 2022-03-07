@@ -55,6 +55,12 @@ public class Stepdefs {
         String value = "\n" + result + "\n";
         assertEquals(value, io.outputs.get(11));
     }
+    
+    @Then("the program should say {string} for search results")
+    public void searchByTitleSuccessful(String result) {
+        String value = "\n" + result + "\n";
+        assertEquals(value, io.outputs.get(10));
+    }
 
     @When("tip {string} is entered with confirmation {string}")
     public void tipIsEnteredWithConfirmation(String string, String string2) {
