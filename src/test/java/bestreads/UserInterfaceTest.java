@@ -150,11 +150,12 @@ public class UserInterfaceTest {
             "tags",
             "3", //Delete tip
             "9",
+            "y",
             "0"
         };
         UserInputsIOStub io = new UserInputsIOStub(testInputs);
         new UserInterface(io, testTips).start();
-        assertEquals("Oops! Tip with id 9 was not found", io.outputs.get(22));
+        assertEquals("Oops! Tip with id 9 was not found", io.outputs.get(23));
     }
 }
 
