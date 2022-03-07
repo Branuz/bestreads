@@ -23,6 +23,7 @@ public class TipTest {
     @Before
     public void setUp() {
         this.testTip = new Tip("https://ohjelmistotuotanto-hy-avoin.github.io/", "New Tip", "Tag");
+        this.testTip.setId(0);
     }
     
     @Test

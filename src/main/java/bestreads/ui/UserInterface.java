@@ -135,9 +135,9 @@ public class UserInterface {
             int idd = Integer.valueOf(id);
             ArrayList<Integer> ids = new ArrayList<Integer>();
             ids = this.tips.getIds();
-            if(!ids.contains(idd)){
+            if (!ids.contains(idd)) {
                 io.print("Oops! Tip with id " + id + " was not found");
-            }else{
+            } else {
                 io.print("Are you sure you want to delete tip " + id + "? (y/n))");
                 String confirmed = io.nextLine().toLowerCase();
 
