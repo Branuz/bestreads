@@ -72,6 +72,9 @@ BestReads is designed for storing and searching reading tips. Tips are stored to
 
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/155896824-27882a78-274c-49c4-a112-4912e830fd20.png">
 
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/157181691-06440b99-6941-4a89-8805-e5bef2e58dd4.png">
+
+
 <h2>Final report of the project</h2>
   
 [Team's final report](https://docs.google.com/document/d/1hsk3RRMTLlUdPTCcBUK8I9rnN_STo6GY0MT_oH8QF18/edit?usp=sharing)
