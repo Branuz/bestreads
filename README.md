@@ -62,9 +62,7 @@ BestReads is designed for storing and searching reading tips. Tips are stored to
   * JavaDoc
   * Significant new functionality should be documented in README and/or user manual
 * Changes have been pushed to GitHub.
-  * A pull request has been created when adding new functionalities (i.e. not when adding minor fixes or tests)
-  * The pull request has been reviewed and accepted by a team member
- 
+
 
 <h2>BurnDown Charts</h2>
 
