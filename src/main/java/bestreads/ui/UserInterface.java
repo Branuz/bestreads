@@ -1,6 +1,8 @@
 package bestreads.ui;
 
 import java.util.*;
+import com.jakewharton.fliptables.FlipTable;
+import com.jakewharton.fliptables.FlipTableConverters;
 
 import bestreads.readingtip.ReadingTips;
 import bestreads.readingtip.Tip;
@@ -119,7 +121,9 @@ public class UserInterface {
      */
     public void showTips() {
         io.print("\nVoilá! All your reading tips:");
-        io.print(this.tips.toString());
+        //io.print(this.tips.toString());
+        io.print(FlipTableConverters.fromIterable(this.tips.getTips(), Tip.class));
+
     }
 
     /**

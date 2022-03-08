@@ -122,4 +122,12 @@ public class ReadingTips {
 
         return allTips;
     }
+
+    public ArrayList<Tip> getTips() {
+        ArrayList<Tip> tips = new ArrayList<Tip>();
+
+        tips = dbManager.getAllTipsFromDatabase();
+
+        return tips;
+    }
 }

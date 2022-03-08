@@ -29,7 +29,7 @@ dependencies {
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.0.0'
     testImplementation 'junit:junit:4.13.2'
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.36.0.3'
-
+    compile 'com.jakewharton.fliptables:fliptables:1.1.0'
 }
 
 test {
@@ -39,6 +39,7 @@ test {
 
 
 run {
+    allJvmArgs = ['-Dsun.stdout.encoding=cp437']
     standardInput = System.in
 }
 
