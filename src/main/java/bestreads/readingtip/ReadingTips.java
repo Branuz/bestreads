@@ -73,17 +73,17 @@ public class ReadingTips {
      */
     public ArrayList<Tip> searchByTitle(String searchPhrase) {
         ArrayList<Tip> tips = new ArrayList<Tip>();
-	ArrayList<Tip> returnTips = new ArrayList<Tip>();
+	    ArrayList<Tip> returnTips = new ArrayList<Tip>();
 	
-        tips = dbManager.getAllTipsFromDatabase();
+	    tips = dbManager.getAllTipsFromDatabase();
 
-	for(Tip tip: tips) {
-	    if(FuzzyMatch.fuzzyMatch(searchPhrase, tip.getTitle())) {
-		returnTips.add(tip);
+	    for(Tip tip: tips) {
+		if(FuzzyMatch.fuzzyMatch(searchPhrase, tip.getTitle())) {
+		    returnTips.add(tip);
+		}
 	    }
-	}
 	
-	return returnTips;
+	    return returnTips;
     }
 
     /**
