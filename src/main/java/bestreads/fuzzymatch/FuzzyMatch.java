@@ -18,7 +18,7 @@ public class FuzzyMatch {
      */
     private static Boolean exactMatch(String a, String b) {
 	    b = b.toLowerCase();
-	    a = a.toLowerCase();	
+	    a = a.toLowerCase();
 
 	    String regex = a;
 	    Pattern pattern = Pattern.compile(regex);
@@ -36,26 +36,26 @@ public class FuzzyMatch {
      * @param b String to be searched from
      *
      * @return If first string is found with in second in fuzzy way, true
-     */    
+     */
     private static Boolean missingChar(String a, String b) {
 	    b = b.toLowerCase();
-	    a = a.toLowerCase();	
-	
+	    a = a.toLowerCase();
+
 	    for(int i = 1; i < a.length(); i++) {
 	        String aleft = a.substring(0, i);
 	        String aright = a.substring(i, a.length());
-	    
+
 	        String regex = aleft + "." + aright;
 	        Pattern pattern = Pattern.compile(regex);
 
 	        Matcher matcher = pattern.matcher(b);
 	        if (matcher.find()) {
 		    return true;
-		}	
+		}
 	    }
 	    return false;
     }
-    
+
     /** Test if first argument is a substring of the second argument
      * Example additionalChar("abc", "aaaccc") returns True
      *
@@ -63,22 +63,22 @@ public class FuzzyMatch {
      * @param b String to be searched from
      *
      * @return If first string is found with in second in fuzzy way, true
-     */    
+     */
     private static Boolean additionalChar(String a, String b) {
 	    b = b.toLowerCase();
-	    a = a.toLowerCase();	
+	    a = a.toLowerCase();
 
 	    for(int i = 1; i <= a.length(); i++) {
 	        String aleft = a.substring(0, i-1);
 	        String aright = a.substring(i, a.length());
-	    
+
 	        String regex = aleft + aright;
 	        Pattern pattern = Pattern.compile(regex);
 
 	        Matcher matcher = pattern.matcher(b);
 	        if (matcher.find()) {
 		    return true;
-		}	
+		}
 	    }
 
 	    return false;
@@ -91,22 +91,22 @@ public class FuzzyMatch {
      * @param b String to be searched from
      *
      * @return If first string is found with in second in fuzzy way, true
-     */    
+     */
     private static Boolean flippedChar(String a, String b) {
 	    b = b.toLowerCase();
-	    a = a.toLowerCase();	
-	
+	    a = a.toLowerCase();
+
 	    for(int i = 1; i <= a.length(); i++) {
 	        String aleft = a.substring(0, i-1);
 	        String aright = a.substring(i, a.length());
-	    
+
 	        String regex = aleft + "." + aright;
 	        Pattern pattern = Pattern.compile(regex);
 
 	        Matcher matcher = pattern.matcher(b);
 	        if (matcher.find()) {
 		    return true;
-		}	
+		}
 	    }
 
 	    return false;
@@ -119,9 +119,9 @@ public class FuzzyMatch {
      * @param b String to be searched from
      *
      * @return If first string is found with in second in fuzzy way, true
-     */    
+     */
     public static Boolean fuzzyMatch(String a, String b) {
-	
+
 	    return exactMatch(a, b) ||
 	        missingChar(a, b) ||
 	        additionalChar(a, b) ||
