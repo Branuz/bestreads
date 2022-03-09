@@ -1,7 +1,10 @@
 package bestreads.ui;
 
 import java.util.*;
-import com.jakewharton.fliptables.FlipTableConverters;
+
+import com.github.freva.asciitable.AsciiTable;
+import com.github.freva.asciitable.Column;
+import com.github.freva.asciitable.HorizontalAlign;
 
 import bestreads.readingtip.ReadingTips;
 import bestreads.readingtip.Tip;
@@ -121,8 +124,12 @@ public class UserInterface {
     public void showTips() {
         io.print("\nVoilá! All your reading tips:");
         //io.print(this.tips.toString());
-        io.print(FlipTableConverters.fromIterable(this.tips.getTips(), Tip.class));
 
+        io.print(AsciiTable.getTable(this.tips.getTips(), Arrays.asList(
+            new Column().header("Id").headerAlign(HorizontalAlign.CENTER).with(tip -> Integer.toString(tip.getId())),
+            new Column().header("Title").headerAlign(HorizontalAlign.CENTER).with(tip -> tip.getTitle()),
+            new Column().header("Url").headerAlign(HorizontalAlign.CENTER).with(tip -> tip.getUrl()),
+            new Column().header("Tags").headerAlign(HorizontalAlign.CENTER).with(tip -> tip.getTagsAsString()))));
     }
 
     /**

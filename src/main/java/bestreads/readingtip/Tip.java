@@ -169,4 +169,12 @@ public class Tip {
     public String toString() {
         return "(id " + this.id + ") " + this.title + ", " + this.url + ", tags " + this.tags;
     }
+
+    public String getTagsAsString() {
+        String tags = "";
+        for (String tag : this.tags) {
+            tags += tag + " ";
+        }
+        return tags;
+    }
 }
