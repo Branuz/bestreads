@@ -47,6 +47,16 @@ public class Tip {
         addTagsFromString(tags);
     }
 
+    public Tip(String url, String title, int id, String[] tags) {
+
+        this(url, title);
+        this.id = id;
+        
+        for (String tag : tags) {
+            addTag(tag);
+        }
+    }
+
     public Tip(String url, String title, int id, String tags) {
 
         this(url, title);
@@ -59,6 +69,8 @@ public class Tip {
         this.title = title;
         this.id = id;
     }
+
+    
 
     public void setUrl(String url) {
         this.url = url;

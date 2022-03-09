@@ -16,10 +16,10 @@ public class Main {
         
 	    UserInterfaceIO io = new UserInterfaceIO();
 	    DatabaseManager dbManager = new DatabaseManager();
-        
+
 	    ReadingTips tips = new ReadingTips(dbManager);
         UserInterface ui = new UserInterface(io, tips);
-	
+
         ui.start();
     }
 }

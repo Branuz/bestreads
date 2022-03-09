@@ -27,6 +27,8 @@ public class Exporter {
                 jsonObject.put("id", tip.getId());
                 jsonObject.put("title", tip.getTitle());
                 jsonObject.put("url", tip.getUrl());
+                jsonObject.put("tags", tip.getTags());
+
                 exportArray.add(jsonObject);
             }
             
