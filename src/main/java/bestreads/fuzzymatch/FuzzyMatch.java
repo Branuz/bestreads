@@ -41,7 +41,7 @@ public class FuzzyMatch {
 	    b = b.toLowerCase();
 	    a = a.toLowerCase();
 
-	    for(int i = 1; i < a.length(); i++) {
+	    for (int i = 1; i < a.length(); i++) {
 	        String aleft = a.substring(0, i);
 	        String aright = a.substring(i, a.length());
 
@@ -50,7 +50,7 @@ public class FuzzyMatch {
 
 	        Matcher matcher = pattern.matcher(b);
 	        if (matcher.find()) {
-		    return true;
+		        return true;
 		}
 	    }
 	    return false;
@@ -68,16 +68,16 @@ public class FuzzyMatch {
 	    b = b.toLowerCase();
 	    a = a.toLowerCase();
 
-	    for(int i = 1; i <= a.length(); i++) {
-	        String aleft = a.substring(0, i-1);
-	        String aright = a.substring(i, a.length());
+	    for (int i = 1; i <= a.length(); i++) {
+	            String aleft = a.substring(0, i-1);
+	            String aright = a.substring(i, a.length());
 
-	        String regex = aleft + aright;
-	        Pattern pattern = Pattern.compile(regex);
+	            String regex = aleft + aright;
+	            Pattern pattern = Pattern.compile(regex);
 
-	        Matcher matcher = pattern.matcher(b);
-	        if (matcher.find()) {
-		    return true;
+	            Matcher matcher = pattern.matcher(b);
+	            if (matcher.find()) {
+		            return true;
 		}
 	    }
 
@@ -96,17 +96,17 @@ public class FuzzyMatch {
 	    b = b.toLowerCase();
 	    a = a.toLowerCase();
 
-	    for(int i = 1; i <= a.length(); i++) {
-	        String aleft = a.substring(0, i-1);
-	        String aright = a.substring(i, a.length());
+	    for (int i = 1; i <= a.length(); i++) {
+	            String aleft = a.substring(0, i-1);
+	            String aright = a.substring(i, a.length());
 
-	        String regex = aleft + "." + aright;
-	        Pattern pattern = Pattern.compile(regex);
+	            String regex = aleft + "." + aright;
+	            Pattern pattern = Pattern.compile(regex);
 
-	        Matcher matcher = pattern.matcher(b);
-	        if (matcher.find()) {
-		    return true;
-		}
+	            Matcher matcher = pattern.matcher(b);
+	            if (matcher.find()) {
+		            return true;
+		    }
 	    }
 
 	    return false;
@@ -123,8 +123,8 @@ public class FuzzyMatch {
     public static Boolean fuzzyMatch(String a, String b) {
 
 	    return exactMatch(a, b) ||
-	        missingChar(a, b) ||
-	        additionalChar(a, b) ||
-	        flippedChar(a, b);
+	            missingChar(a, b) ||
+	            additionalChar(a, b) ||
+	            flippedChar(a, b);
     }
 }
