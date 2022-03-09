@@ -75,7 +75,7 @@ public class ReadingTips {
     }
 
     /**
-     * Search tips by title from database
+     * Search tips by tag from database
      * 
      * @param searchTag string used for search
      * @return Tips as an array
