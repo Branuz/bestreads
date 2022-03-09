@@ -46,7 +46,6 @@ public class FuzzyMatch {
 	    String a_right = a.substring(i, a.length());
 	    
 	    String regex = a_left + "." + a_right;
-	    System.out.println("    Regex: " + regex);
 	    Pattern pattern = Pattern.compile(regex);
 
 	    Matcher matcher = pattern.matcher(b);
@@ -74,7 +73,6 @@ public class FuzzyMatch {
 	    String a_right = a.substring(i, a.length());
 	    
 	    String regex = a_left + a_right;
-	    System.out.println("    Regex: " + regex);
 	    Pattern pattern = Pattern.compile(regex);
 
 	    Matcher matcher = pattern.matcher(b);
@@ -103,7 +101,6 @@ public class FuzzyMatch {
 	    String a_right = a.substring(i, a.length());
 	    
 	    String regex = a_left + "." + a_right;
-	    System.out.println("    Regex: " + regex);
 	    Pattern pattern = Pattern.compile(regex);
 
 	    Matcher matcher = pattern.matcher(b);
@@ -129,25 +126,5 @@ public class FuzzyMatch {
 	    missingChar(a, b) ||
 	    additionalChar(a, b) ||
 	    flippedChar(a, b);
-    }
-    public static void main(String[] args) {
-	System.out.println("Fuzzy!");
-
-	String a = "bc";
-	String b = "abcd";
-	System.out.println("A: '" + a + "' B: '"+ b + "' " + fuzzyMatch(a, b));
-
-	a = "bd";
-	b = "abcde";
-	System.out.println("A: '" + a + "' B: '"+ b + "' " + fuzzyMatch(a, b));
-
-	a = "bcd";
-	b = "abde";
-	System.out.println("A: '" + a + "' B: '"+ b + "' " + fuzzyMatch(a, b));
-
-	a = "ba";
-	b = "abcde";
-	System.out.println("A: '" + a + "' B: '"+ b + "' " + fuzzyMatch(a, b));
-	
     }
 }

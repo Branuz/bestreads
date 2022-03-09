@@ -3,6 +3,7 @@ package bestreads.readingtip;
 import java.util.*;
 
 import bestreads.databasehandlers.DatabaseManager;
+import bestreads.fuzzymatch.FuzzyMatch;
 
 /**
  * The ReadingTips object contains methods to
@@ -65,13 +66,24 @@ public class ReadingTips {
     }
 
     /**
-     * Search tips by title from database
+     * Search tips by title from database using fuzzy string matching
      * 
      * @param searchPhrase string used for search
      * @return Tips as an array
      */
     public ArrayList<Tip> searchByTitle(String searchPhrase) {
-        return dbManager.searchByTitle(searchPhrase);
+        ArrayList<Tip> tips = new ArrayList<Tip>();
+	ArrayList<Tip> returnTips = new ArrayList<Tip>();
+	
+        tips = dbManager.getAllTipsFromDatabase();
+
+	for(Tip tip: tips) {
+	    if(FuzzyMatch.fuzzyMatch(searchPhrase, tip.getTitle())) {
+		returnTips.add(tip);
+	    }
+	}
+	
+	return returnTips;
     }
 
     /**
