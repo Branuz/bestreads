@@ -17,17 +17,17 @@ public class FuzzyMatch {
      * @return If first string is found with in second, true
      */
     private static Boolean exactMatch(String a, String b) {
-	b = b.toLowerCase();
-	a = a.toLowerCase();	
+	    b = b.toLowerCase();
+	    a = a.toLowerCase();	
 
-	String regex = a;
-	Pattern pattern = Pattern.compile(regex);
-	Matcher matcher = pattern.matcher(b);
+	    String regex = a;
+	    Pattern pattern = Pattern.compile(regex);
+	    Matcher matcher = pattern.matcher(b);
 
-	return matcher.find();
+	    return matcher.find();
     }
 
-    /** Test if first argument is a substring of the second argument,
+     /** Test if first argument is a substring of the second argument,
      *even if the first string is missing one matching character
      *
      * Example missingChar("ac", "aaabccc") returns True
@@ -38,22 +38,22 @@ public class FuzzyMatch {
      * @return If first string is found with in second in fuzzy way, true
      */    
     private static Boolean missingChar(String a, String b) {
-	b = b.toLowerCase();
-	a = a.toLowerCase();	
+	    b = b.toLowerCase();
+	    a = a.toLowerCase();	
 	
-	for(int i=1; i < a.length(); i++) {
-	    String a_left = a.substring(0,i);
-	    String a_right = a.substring(i, a.length());
+	    for(int i = 1; i < a.length(); i++) {
+	        String aleft = a.substring(0, i);
+	        String aright = a.substring(i, a.length());
 	    
-	    String regex = a_left + "." + a_right;
-	    Pattern pattern = Pattern.compile(regex);
+	        String regex = aleft + "." + aright;
+	        Pattern pattern = Pattern.compile(regex);
 
-	    Matcher matcher = pattern.matcher(b);
-	    if(matcher.find()) {
-		return true;
-	    }	
-	}
-	return false;
+	        Matcher matcher = pattern.matcher(b);
+	        if (matcher.find()) {
+		    return true;
+		}	
+	    }
+	    return false;
     }
     
     /** Test if first argument is a substring of the second argument
@@ -65,23 +65,23 @@ public class FuzzyMatch {
      * @return If first string is found with in second in fuzzy way, true
      */    
     private static Boolean additionalChar(String a, String b) {
-	b = b.toLowerCase();
-	a = a.toLowerCase();	
+	    b = b.toLowerCase();
+	    a = a.toLowerCase();	
 
-	for(int i=1; i <= a.length(); i++) {
-	    String a_left = a.substring(0,i-1);
-	    String a_right = a.substring(i, a.length());
+	    for(int i = 1; i <= a.length(); i++) {
+	        String aleft = a.substring(0, i-1);
+	        String aright = a.substring(i, a.length());
 	    
-	    String regex = a_left + a_right;
-	    Pattern pattern = Pattern.compile(regex);
+	        String regex = aleft + aright;
+	        Pattern pattern = Pattern.compile(regex);
 
-	    Matcher matcher = pattern.matcher(b);
-	    if(matcher.find()) {
-		return true;
-	    }	
-	}
+	        Matcher matcher = pattern.matcher(b);
+	        if (matcher.find()) {
+		    return true;
+		}	
+	    }
 
-	return false;
+	    return false;
     }
 
     /** Test if first argument is a substring of the second argument
@@ -93,23 +93,23 @@ public class FuzzyMatch {
      * @return If first string is found with in second in fuzzy way, true
      */    
     private static Boolean flippedChar(String a, String b) {
-	b = b.toLowerCase();
-	a = a.toLowerCase();	
+	    b = b.toLowerCase();
+	    a = a.toLowerCase();	
 	
-	for(int i=1; i <= a.length(); i++) {
-	    String a_left = a.substring(0,i-1);
-	    String a_right = a.substring(i, a.length());
+	    for(int i = 1; i <= a.length(); i++) {
+	        String aleft = a.substring(0, i-1);
+	        String aright = a.substring(i, a.length());
 	    
-	    String regex = a_left + "." + a_right;
-	    Pattern pattern = Pattern.compile(regex);
+	        String regex = aleft + "." + aright;
+	        Pattern pattern = Pattern.compile(regex);
 
-	    Matcher matcher = pattern.matcher(b);
-	    if(matcher.find()) {
-		return true;
-	    }	
-	}
+	        Matcher matcher = pattern.matcher(b);
+	        if (matcher.find()) {
+		    return true;
+		}	
+	    }
 
-	return false;
+	    return false;
     }
 
     /** Test if first argument is a substring of the second argument
@@ -122,9 +122,9 @@ public class FuzzyMatch {
      */    
     public static Boolean fuzzyMatch(String a, String b) {
 	
-	return exactMatch(a, b) ||
-	    missingChar(a, b) ||
-	    additionalChar(a, b) ||
-	    flippedChar(a, b);
+	    return exactMatch(a, b) ||
+	        missingChar(a, b) ||
+	        additionalChar(a, b) ||
+	        flippedChar(a, b);
     }
 }
