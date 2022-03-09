@@ -72,11 +72,11 @@ public class FuzzyMatch {
 	        String aleft = a.substring(0, i - 1);
 	        String aright = a.substring(i, a.length());
 
-		String regex = aleft + aright;
-		Pattern pattern = Pattern.compile(regex);
+		    String regex = aleft + aright;
+		    Pattern pattern = Pattern.compile(regex);
 
-		Matcher matcher = pattern.matcher(b);
-		if (matcher.find()) {
+		    Matcher matcher = pattern.matcher(b);
+		    if (matcher.find()) {
 		        return true;
 		    }
 	    }
@@ -100,11 +100,11 @@ public class FuzzyMatch {
 	        String aleft = a.substring(0, i - 1);
 	        String aright = a.substring(i, a.length());
 
-		String regex = aleft + "." + aright;
-		Pattern pattern = Pattern.compile(regex);
+		    String regex = aleft + "." + aright;
+		    Pattern pattern = Pattern.compile(regex);
 
-		Matcher matcher = pattern.matcher(b);
-		if (matcher.find()) {
+		    Matcher matcher = pattern.matcher(b);
+		    if (matcher.find()) {
 		        return true;
 		    }
 	    }

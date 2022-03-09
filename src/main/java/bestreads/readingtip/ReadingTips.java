@@ -77,10 +77,10 @@ public class ReadingTips {
 	
 	    tips = dbManager.getAllTipsFromDatabase();
 
-	    for(Tip tip: tips) {
-		if(FuzzyMatch.fuzzyMatch(searchPhrase, tip.getTitle())) {
-		    returnTips.add(tip);
-		}
+	    for (Tip tip: tips) {
+		    if(FuzzyMatch.fuzzyMatch(searchPhrase, tip.getTitle())) {
+			returnTips.add(tip);
+		    }
 	    }
 	
 	    return returnTips;
