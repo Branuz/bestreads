@@ -2,7 +2,6 @@ package bestreads.main;
 
 import bestreads.ui.UserInterface;
 import bestreads.ui.UserInterfaceIO;
-//import bestreads.databasehandlers.ConnectionManager;
 import bestreads.databasehandlers.DatabaseManager;
 import bestreads.readingtip.ReadingTips;
 
@@ -17,7 +16,7 @@ public class Main {
         
 	    UserInterfaceIO io = new UserInterfaceIO();
 	    DatabaseManager dbManager = new DatabaseManager();
-	
+        
 	    ReadingTips tips = new ReadingTips(dbManager);
         UserInterface ui = new UserInterface(io, tips);
 	

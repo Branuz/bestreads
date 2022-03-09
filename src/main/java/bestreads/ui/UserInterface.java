@@ -1,7 +1,6 @@
 package bestreads.ui;
 
 import java.util.*;
-import com.jakewharton.fliptables.FlipTable;
 import com.jakewharton.fliptables.FlipTableConverters;
 
 import bestreads.readingtip.ReadingTips;

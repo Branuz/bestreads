@@ -20,3 +20,6 @@ build
 # Ignore db files
 *.db
 
+# Ignore exportable json files
+*.json
+
