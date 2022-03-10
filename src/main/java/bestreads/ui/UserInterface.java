@@ -127,9 +127,9 @@ public class UserInterface {
 
         io.print(AsciiTable.getTable(this.tips.getTips(), Arrays.asList(
             new Column().header("Id").headerAlign(HorizontalAlign.CENTER).with(tip -> Integer.toString(tip.getId())),
-            new Column().header("Title").headerAlign(HorizontalAlign.CENTER).with(tip -> tip.getTitle()),
-            new Column().header("Url").headerAlign(HorizontalAlign.CENTER).with(tip -> tip.getUrl()),
-            new Column().header("Tags").headerAlign(HorizontalAlign.CENTER).with(tip -> tip.getTagsAsString()))));
+            new Column().header("Title").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER).with(tip -> tip.getTitle()),
+            new Column().header("Url").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER).with(tip -> tip.getUrl()),
+            new Column().header("Tags").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER).with(tip -> tip.getTagsAsString()))));
     }
 
     /**
