@@ -66,4 +66,13 @@ public class TipTest {
         testTip.setId(3);
         assertEquals(3, testTip.getId());
     }
+
+    @Test
+    public void tagsArePrintedCorrectlyWithoutCommaAtEnd() {
+        ArrayList<String> testTags = new ArrayList<>();
+        testTags.add("search");
+        testTags.add("google");
+        testTip.setTags(testTags);
+        assertEquals("search, google", testTip.getTagsAsString());
+    }
 }

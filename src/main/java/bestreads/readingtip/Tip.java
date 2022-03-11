@@ -175,8 +175,11 @@ public class Tip {
      */
     public String getTagsAsString() {
         String tags = "";
-        for (String tag : this.tags) {
-            tags += tag + " ";
+        for (int i = 0; i < this.tags.size(); i++) {
+            tags += this.tags.get(i);
+            if (i != this.tags.size() - 1) {
+                tags += ", ";
+            }
         }
         return tags;
     }
