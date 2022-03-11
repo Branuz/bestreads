@@ -44,8 +44,8 @@ public class UserInterface {
         while (true) {
             showCommands();
             String input = io.nextLine();
-            if (!input.matches("([0-5])")) {
-                io.print("Oops! Please choose between 0 and 5.");
+            if (!input.matches("([0-7])")) {
+                io.print("Oops! Please choose between 0 and 7.");
                 continue;
             }
             int command = Integer.valueOf(input);
@@ -70,6 +70,8 @@ public class UserInterface {
         io.print("3 -- Delete a reading tip");
         io.print("4 -- Search tips by title");
         io.print("5 -- Search tips by tag");
+        io.print("6 -- Export tips");
+        io.print("7 -- Import tips from json");
         io.print("0 -- Exit program\n");
     }
 
@@ -92,6 +94,12 @@ public class UserInterface {
         }
         if (command == 5) {
             searchByTag();
+        }
+        if (command == 6) {
+            exportTips();
+        }
+        if (command == 7) {
+            importTips();
         }
     }
 
@@ -206,5 +214,25 @@ public class UserInterface {
         } else {
             io.print("Oops! Could not complete search without a tag.");
         }
+    }
+    
+    /**
+     * Exports user's reading tips to json format.
+     * @see ReadingTips#exportTips() 
+     */
+    public void exportTips() {
+        this.tips.exportTips();
+        io.print("All done! Your reading tips have been exported to exportFile.json.");
+    }
+    
+    /**
+     * Imports reading tips from exportFile.json.
+     * @see ReadingTips#importTips() 
+     */
+    public void importTips() {
+        int initialSize = this.tips.getTips().size();
+        this.tips.importTips();
+        int importedTipsSize = this.tips.getTips().size() - initialSize;
+        io.print("And... done! Imported " + importedTipsSize + " reading tip(s).");
     }
 }

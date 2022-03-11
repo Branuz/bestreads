@@ -3,6 +3,8 @@ package bestreads.readingtip;
 import java.util.*;
 
 import bestreads.databasehandlers.DatabaseManager;
+import bestreads.exportimport.Exporter;
+import bestreads.exportimport.Importer;
 import bestreads.fuzzymatch.FuzzyMatch;
 
 /**
@@ -141,5 +143,21 @@ public class ReadingTips {
         tips = dbManager.getAllTipsFromDatabase();
 
         return tips;
+    }
+    
+    /**
+     * Exports users's reading tips to json.
+     */
+    public void exportTips() {
+        Exporter ex = new Exporter();
+        ex.createNewJsonFile(this.getTips());
+    }
+    
+    /**
+     * Imports the contents of exportFile.json containing reading tips.
+     */
+    public void importTips() {
+        Importer imp = new Importer();
+        imp.importFile(dbManager);
     }
 }

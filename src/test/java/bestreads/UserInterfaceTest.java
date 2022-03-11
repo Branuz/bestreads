@@ -29,28 +29,28 @@ public class UserInterfaceTest {
     public void showTipsCanBeSelected() {
         UserInputsIOStub io = new UserInputsIOStub("2", "0");
         new UserInterface(io, testTips).start();
-        assertEquals("\nVoilá! All your reading tips:", io.outputs.get(9));
+        assertEquals("\nVoilá! All your reading tips:", io.outputs.get(11));
     }
 
     @Test
     public void appCanBeClosed() {
         UserInputsIOStub io = new UserInputsIOStub("0");
         new UserInterface(io, testTips).start();
-        assertEquals("\nSee you soon!", io.outputs.get(9));
+        assertEquals("\nSee you soon!", io.outputs.get(11));
     }
 
     @Test
     public void invalidCommandNotAccepted() {
         UserInputsIOStub io = new UserInputsIOStub("invalidUserInput", "0");
         new UserInterface(io, testTips).start();
-        assertEquals("Oops! Please choose between 0 and 5.", io.outputs.get(9));
+        assertEquals("Oops! Please choose between 0 and 7.", io.outputs.get(11));
     }
     
     @Test
-    public void searchBTagCanBeSelected() {
+    public void searchByTagCanBeSelected() {
         UserInputsIOStub io = new UserInputsIOStub("5", "tags", "0");
         new UserInterface(io, testTips).start();
-        assertTrue(io.outputs.get(9).contains("Tags found:"));
+        assertTrue(io.outputs.get(11).contains("Tags found:"));
         
     }
         
@@ -58,7 +58,21 @@ public class UserInterfaceTest {
     public void searchByTitleCanBeSelected() {
         UserInputsIOStub io = new UserInputsIOStub("4", "searching", "0");
         new UserInterface(io, testTips).start();
-        assertEquals("Please provide a search phrase", io.outputs.get(9));
+        assertEquals("Please provide a search phrase", io.outputs.get(11));
+    }
+    
+    @Test
+    public void exportTipsCanBeSelected() {
+        UserInputsIOStub io = new UserInputsIOStub("6", "0");
+        new UserInterface(io, testTips).start();
+        assertEquals("All done! Your reading tips have been exported to exportFile.json.", io.outputs.get(11));
+    }
+    
+    @Test
+    public void importTipsCanBeSelected() {
+        UserInputsIOStub io = new UserInputsIOStub("7", "0");
+        new UserInterface(io, testTips).start();
+        assertEquals("And... done! Imported 0 reading tip(s).", io.outputs.get(11));
     }
     
     @Test
@@ -74,7 +88,7 @@ public class UserInterfaceTest {
         };
         UserInputsIOStub io = new UserInputsIOStub(testInputs);
         new UserInterface(io, testTips).start();
-        assertEquals("\nTa-da! You have 1 search result(s)\n", io.outputs.get(21));
+        assertEquals("\nTa-da! You have 1 search result(s)\n", io.outputs.get(25));
         
     }
     
@@ -91,7 +105,7 @@ public class UserInterfaceTest {
         };
         UserInputsIOStub io = new UserInputsIOStub(testInputs);
         new UserInterface(io, testTips).start();
-        assertEquals("Oops! Could not complete search with an empty search phrase.", io.outputs.get(21));
+        assertEquals("Oops! Could not complete search with an empty search phrase.", io.outputs.get(25));
         
     }
 
@@ -109,7 +123,7 @@ public class UserInterfaceTest {
         };
         UserInputsIOStub io = new UserInputsIOStub(testInputs);
         new UserInterface(io, testTips).start();
-        assertEquals("Done! Tip with id 1 was deleted succesfully", io.outputs.get(24));
+        assertEquals("Done! Tip with id 1 was deleted succesfully", io.outputs.get(28));
     }
 
     @Test
@@ -121,7 +135,7 @@ public class UserInterfaceTest {
         };
         UserInputsIOStub io = new UserInputsIOStub(testInputs);
         new UserInterface(io, testTips).start();
-        assertEquals("Oops! Please give a number only value for the id", io.outputs.get(12));
+        assertEquals("Oops! Please give a number only value for the id", io.outputs.get(14));
     }
 
     @Test
@@ -138,7 +152,7 @@ public class UserInterfaceTest {
         };
         UserInputsIOStub io = new UserInputsIOStub(testInputs);
         new UserInterface(io, testTips).start();
-        assertEquals("No worries! Nothing was deleted", io.outputs.get(24));
+        assertEquals("No worries! Nothing was deleted", io.outputs.get(28));
     }
 
     @Test
@@ -155,7 +169,7 @@ public class UserInterfaceTest {
         };
         UserInputsIOStub io = new UserInputsIOStub(testInputs);
         new UserInterface(io, testTips).start();
-        assertEquals("Oops! Tip with id 9 was not found", io.outputs.get(23));
+        assertEquals("Oops! Tip with id 9 was not found", io.outputs.get(27));
     }
 }
 

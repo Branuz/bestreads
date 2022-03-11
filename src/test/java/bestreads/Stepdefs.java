@@ -37,7 +37,7 @@ public class Stepdefs {
     @Then("the program should say {string} and {string}")
     public void tipAddedSuccessfully(String firstLine, String secondLine) {
         String value = "\n" + firstLine + "\n" + secondLine;
-        assertEquals(value, io.outputs.get(12));
+        assertEquals(value, io.outputs.get(14));
     }
 
     @When("search criteria {string} is entered")
@@ -50,13 +50,13 @@ public class Stepdefs {
     @Then("the program should say {string}")
     public void searchByTagSuccessfull(String result) {
         String value = "\n" + result + "\n";
-        assertEquals(value, io.outputs.get(11));
+        assertEquals(value, io.outputs.get(13));
     }
     
     @Then("the program should say {string} for search results")
     public void searchByTitleSuccessful(String result) {
         String value = "\n" + result + "\n";
-        assertEquals(value, io.outputs.get(10));
+        assertEquals(value, io.outputs.get(12));
     }
 
     @When("tip {string} is entered with confirmation {string}")
