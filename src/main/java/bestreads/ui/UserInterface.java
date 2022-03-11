@@ -131,9 +131,14 @@ public class UserInterface {
      */
     public void showTips() {
         io.print("\nVoilá! All your reading tips:");
-        //io.print(this.tips.toString());
+        printAsciiTable(this.tips.getTips());
+    }
 
-        io.print(AsciiTable.getTable(this.tips.getTips(), Arrays.asList(
+    /**
+     * Shows given table data in an Ascii table
+     */
+    public void printAsciiTable(List<Tip> tips) {
+        io.print(AsciiTable.getTable(tips, Arrays.asList(
             new Column().header("Id").headerAlign(HorizontalAlign.CENTER).with(tip -> Integer.toString(tip.getId())),
             new Column().header("Title").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER).with(tip -> tip.getTitle()),
             new Column().header("Url").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER).with(tip -> tip.getUrl()),
@@ -182,9 +187,7 @@ public class UserInterface {
             ArrayList<Tip> result = this.tips.searchByTitle(searchPhrase);
             if (result.size() > 0) {
                 io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
-                for (Tip tip : result) {
-                    io.print(tip.toString());
-                }
+                printAsciiTable(result);
             } else {
                 io.print("\nOh no! You have " + result.size() + " search result(s)\n");
             }
@@ -205,9 +208,7 @@ public class UserInterface {
             ArrayList<Tip> result = this.tips.searchByTag(searchTag);
             if (result.size() > 0) {
                 io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
-                for (Tip tip : result) {
-                    io.print(tip.toString());
-                }
+                printAsciiTable(result);
             } else {
                 io.print("\nOh no! You have " + result.size() + " search result(s)\n");
             }

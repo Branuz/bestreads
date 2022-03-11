@@ -170,6 +170,9 @@ public class Tip {
         return "(id " + this.id + ") " + this.title + ", " + this.url + ", tags " + this.tags;
     }
 
+    /**
+     * Return tags for Ascii Table
+     */
     public String getTagsAsString() {
         String tags = "";
         for (String tag : this.tags) {
