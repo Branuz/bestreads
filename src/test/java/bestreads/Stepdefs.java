@@ -84,7 +84,7 @@ public class Stepdefs {
         assertEquals(expected, actual);
     }
 
-    @When("user has created reading tips and gives export file name {string}")
+    @When("user has created reading tips and gives the export file name {string}")
     public void exportCommandIsEntered(String fileName) {
         testTips.deleteAllRows();
         testTips.addTip("test", "test", "test");
@@ -99,7 +99,7 @@ public class Stepdefs {
         assertEquals(confirmation, io.outputs.get(12));
     }
 
-    @When("user wants to import an json file named {string} located in root folder including two tips")
+    @When("user imports a json file named {string} located in project root including two tips")
     public void importCommandIsEntered(String fileName) {
         testTips.deleteAllRows();
         testTips.addTip("test", "test", "test");

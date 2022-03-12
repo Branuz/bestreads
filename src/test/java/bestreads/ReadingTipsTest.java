@@ -115,6 +115,8 @@ public class ReadingTipsTest {
         assertEquals(0, searchResults.size());
     }
 
+
+
     @Test
     public void deleteAllTipsWorks() {
         testTips.addTip("A", "first result", "tag1");
@@ -124,6 +126,20 @@ public class ReadingTipsTest {
         testTips.deleteAllRows();
         ArrayList<Integer> noTips = testTips.getIds();
         assertEquals(0, noTips.size());
+    }
+
+
+    @Test
+    public void dataBaseManagerCanBeCreated() {
+	    assertNotNull(new DatabaseManager());
+    }
+
+    @Test
+    public void tipsCanBeSeachedByTitle() {
+        DatabaseManager dbManager = new DatabaseManager(dbFileName);
+        dbManager.searchByTitle("result");
+        testTips.addTip("A", "first result", "tag1");
+	    assertNotNull(dbManager.searchByTitle("result"));
     }
 
 }
