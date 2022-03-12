@@ -84,6 +84,21 @@ public class Stepdefs {
         assertEquals(expected, actual);
     }
 
+    @When("user has created reading tips and an export is executed")
+    public void exportCommandIsEntered() {
+        testTips.deleteAllRows();
+        testTips.addTip("test", "test", "test");
+        testTips.addTip("test2", "test2", "test2");
+        io = new UserInputsIOStub(command);
+        ui = new UserInterface(io, testTips);
+        ui.start();
+    }
+
+    @Then("the program should confirm the export with {string}")
+    public void exportingTipsSuccessfull(String confirmation) {
+        assertEquals(confirmation, io.outputs.get(11));
+    }
+
     @When("user has a suitable json file existing in the root folder and import is executed")
     public void importCommandIsEntered() {
         testTips.deleteAllRows();
