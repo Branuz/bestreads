@@ -121,7 +121,7 @@ public class UserInterface {
             this.tips.addTip(url, title, tags);
             io.print("\nAwesome! You just added a new tip: \n" + title + ": " + url + " with tags " + tags);
         } else {
-            io.print("\nOops! Nothing was added. Both a title and an url are needed.");
+            io.print("Oops! Nothing was added. Both a title and an url are needed.");
         }
     }
 

@@ -19,11 +19,13 @@ import org.junit.Test;
  */
 public class TipTest {
     private Tip testTip;
+
     
     @Before
     public void setUp() {
         this.testTip = new Tip("https://ohjelmistotuotanto-hy-avoin.github.io/", "New Tip", "Tag");
         this.testTip.setId(0);
+
     }
     
     @Test
@@ -74,5 +76,12 @@ public class TipTest {
         testTags.add("google");
         testTip.setTags(testTags);
         assertEquals("search, google", testTip.getTagsAsString());
+    }
+
+    @Test
+    public void tipCanBeCreatedWithTagsAsAList() {
+        String[] tags = {"tag1","tag2"};
+        Tip tip4 = new Tip("https://ohjelmistotuotanto-hy-avoin.github.io/", "New Tip", 4, tags);
+        assertEquals(4, tip4.getId());
     }
 }

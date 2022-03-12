@@ -63,17 +63,25 @@ public class UserInterfaceTest {
     
     @Test
     public void exportTipsCanBeSelected() {
-        UserInputsIOStub io = new UserInputsIOStub("6", "exportFile.json", "0");
+        UserInputsIOStub io = new UserInputsIOStub("6", "exportTest.json", "0");
+        new UserInterface(io, testTips).start();
+        assertEquals("All done! Your reading tips have been exported to exportTest.json.", io.outputs.get(12));
+    }
+
+    @Test
+    public void exportTipsCanBeSelectedWithOutFilename() {
+        UserInputsIOStub io = new UserInputsIOStub("6", "", "0");
         new UserInterface(io, testTips).start();
         assertEquals("All done! Your reading tips have been exported to exportFile.json.", io.outputs.get(12));
     }
     
     @Test
     public void importTipsCanBeSelected() {
-        UserInputsIOStub io = new UserInputsIOStub("7", "exportFile.json", "0");
+        UserInputsIOStub io = new UserInputsIOStub("7", "", "0");
         new UserInterface(io, testTips).start();
         assertEquals("And... done! Imported 0 reading tip(s).", io.outputs.get(12));
     }
+
     
     @Test
     public void searchByTitleResultsArePrinted() {
@@ -170,6 +178,30 @@ public class UserInterfaceTest {
         UserInputsIOStub io = new UserInputsIOStub(testInputs);
         new UserInterface(io, testTips).start();
         assertEquals("Oops! Tip with id 9 was not found", io.outputs.get(27));
+    }
+
+    @Test
+    public void tipsCantBeAddedWithOutUrlAndTitle() {
+        String[] testInputs = {
+            "1", //Add tip
+            "",
+            "",
+            ""
+        };
+        UserInputsIOStub io = new UserInputsIOStub(testInputs);
+        new UserInterface(io, testTips).start();
+        assertEquals("Oops! Nothing was added. Both a title and an url are needed.", io.outputs.get(14));
+    }
+
+    @Test
+    public void searchByTagGivesErrorIfTagIsMissing() {
+        String[] testInputs = {
+            "5", //Add tip
+            ""
+        };
+        UserInputsIOStub io = new UserInputsIOStub(testInputs);
+        new UserInterface(io, testTips).start();
+        assertEquals("Oops! Could not complete search without a tag.", io.outputs.get(13));
     }
 }
 
