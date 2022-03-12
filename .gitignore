@@ -23,3 +23,5 @@ build
 # Ignore exportable json files
 *.json
 
+# Ignore bin folder
+bin/

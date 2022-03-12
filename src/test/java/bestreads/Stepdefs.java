@@ -1,6 +1,5 @@
 package bestreads;
 
-
 import static org.junit.Assert.assertEquals;
 
 import bestreads.readingtip.ReadingTips;
@@ -21,8 +20,6 @@ public class Stepdefs {
     @Given("command {string} is selected")
     public void commandIsGiven(String command) {
         this.command = command;
-
-
         DatabaseManager dbManager = new DatabaseManager(dbFileName);
         this.testTips = new ReadingTips(dbManager);
     }
@@ -52,7 +49,7 @@ public class Stepdefs {
         String value = "\n" + result + "\n";
         assertEquals(value, io.outputs.get(13));
     }
-    
+
     @Then("the program should say {string} for search results")
     public void searchByTitleSuccessful(String result) {
         String value = "\n" + result + "\n";
@@ -85,6 +82,23 @@ public class Stepdefs {
         String expected = "Oops! Tip with id 999 was not found";
         String actual = string;
         assertEquals(expected, actual);
+    }
+
+    @When("user has a suitable json file existing in the root folder and import is executed")
+    public void importCommandIsEntered() {
+        testTips.deleteAllRows();
+        testTips.addTip("test", "test", "test");
+        testTips.addTip("test2", "test2", "test2");
+        testTips.exportTips();
+        io = new UserInputsIOStub(command);
+        ui = new UserInterface(io, testTips);
+        ui.start();
+    }
+
+    @Then("the program should confirm the import and the correct imported amount")
+    public void importingTipsSuccessfull() {
+        String expected = "And... done! Imported 2 reading tip(s).";
+        assertEquals(expected, io.outputs.get(11));
     }
 
 }
