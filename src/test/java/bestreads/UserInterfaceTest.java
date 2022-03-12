@@ -63,16 +63,16 @@ public class UserInterfaceTest {
     
     @Test
     public void exportTipsCanBeSelected() {
-        UserInputsIOStub io = new UserInputsIOStub("6", "0");
+        UserInputsIOStub io = new UserInputsIOStub("6", "exportFile.json", "0");
         new UserInterface(io, testTips).start();
-        assertEquals("All done! Your reading tips have been exported to exportFile.json.", io.outputs.get(11));
+        assertEquals("All done! Your reading tips have been exported to exportFile.json.", io.outputs.get(12));
     }
     
     @Test
     public void importTipsCanBeSelected() {
-        UserInputsIOStub io = new UserInputsIOStub("7", "0");
+        UserInputsIOStub io = new UserInputsIOStub("7", "exportFile.json", "0");
         new UserInterface(io, testTips).start();
-        assertEquals("And... done! Imported 0 reading tip(s).", io.outputs.get(11));
+        assertEquals("And... done! Imported 0 reading tip(s).", io.outputs.get(12));
     }
     
     @Test
@@ -88,7 +88,7 @@ public class UserInterfaceTest {
         };
         UserInputsIOStub io = new UserInputsIOStub(testInputs);
         new UserInterface(io, testTips).start();
-        assertEquals("\nTa-da! You have 1 search result(s)\n", io.outputs.get(25));
+        assertEquals("\nTa-da! You have 1 search result(s):", io.outputs.get(25));
         
     }
     

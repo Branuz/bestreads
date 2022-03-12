@@ -148,16 +148,16 @@ public class ReadingTips {
     /**
      * Exports users's reading tips to json.
      */
-    public void exportTips() {
+    public void exportTips(String fileName) {
         Exporter ex = new Exporter();
-        ex.createNewJsonFile(this.getTips());
+        ex.createNewJsonFile(this.getTips(), fileName);
     }
     
     /**
      * Imports the contents of exportFile.json containing reading tips.
      */
-    public void importTips() {
+    public void importTips(String fileName) {
         Importer imp = new Importer();
-        imp.importFile(dbManager);
+        imp.importFile(dbManager, fileName);
     }
 }

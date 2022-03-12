@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 
 import bestreads.readingtip.Tip;
 
+
 public class Exporter {
 
     private JSONArray exportArray;
@@ -16,10 +17,10 @@ public class Exporter {
         exportArray = new JSONArray();;
     }
 
-    public void createNewJsonFile(ArrayList<Tip> tips) {
+    public void createNewJsonFile(ArrayList<Tip> tips, String filename) {
 
         try { 
-            FileWriter file = new FileWriter("exportFile.json");
+            FileWriter file = new FileWriter(filename);
             JSONObject jsonObject;
 
             for (Tip tip : tips) {

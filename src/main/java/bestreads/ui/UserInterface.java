@@ -186,10 +186,10 @@ public class UserInterface {
         if (!searchPhrase.isBlank()) {
             ArrayList<Tip> result = this.tips.searchByTitle(searchPhrase);
             if (result.size() > 0) {
-                io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
+                io.print("\nTa-da! You have " + result.size() + " search result(s):");
                 printAsciiTable(result);
             } else {
-                io.print("\nOh no! You have " + result.size() + " search result(s)\n");
+                io.print("\nOh no! You have " + result.size() + " search result(s):");
             }
         } else {
             io.print("Oops! Could not complete search with an empty search phrase.");
@@ -207,10 +207,10 @@ public class UserInterface {
         if (!searchTag.isBlank()) {
             ArrayList<Tip> result = this.tips.searchByTag(searchTag);
             if (result.size() > 0) {
-                io.print("\nTa-da! You have " + result.size() + " search result(s)\n");
+                io.print("\nTa-da! You have " + result.size() + " search result(s):");
                 printAsciiTable(result);
             } else {
-                io.print("\nOh no! You have " + result.size() + " search result(s)\n");
+                io.print("\nOh no! You have " + result.size() + " search result(s):");
             }
         } else {
             io.print("Oops! Could not complete search without a tag.");
@@ -222,8 +222,13 @@ public class UserInterface {
      * @see ReadingTips#exportTips() 
      */
     public void exportTips() {
-        this.tips.exportTips();
-        io.print("All done! Your reading tips have been exported to exportFile.json.");
+        io.print("Please give the name of the export file or choose default by enter:");
+        String fileName = io.nextLine();
+        if (fileName.isBlank() | fileName.isEmpty()){
+            fileName = "exportFile.json";
+        }
+        this.tips.exportTips(fileName);
+        io.print("All done! Your reading tips have been exported to " + fileName + ".");
     }
     
     /**
@@ -232,7 +237,12 @@ public class UserInterface {
      */
     public void importTips() {
         int initialSize = this.tips.getTips().size();
-        this.tips.importTips();
+        io.print("Please give the name of the import file or choose default by enter:");
+        String fileName = io.nextLine();
+        if (fileName.isBlank() | fileName.isEmpty()){
+            fileName = "exportFile.json";
+        }
+        this.tips.importTips(fileName);
         int importedTipsSize = this.tips.getTips().size() - initialSize;
         io.print("And... done! Imported " + importedTipsSize + " reading tip(s).");
     }
