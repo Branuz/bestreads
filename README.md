@@ -41,9 +41,11 @@ BestReads is designed for storing and searching reading tips. Tips are stored to
   - [x] User can delete a tip by giving the id (write command "3")
   - [x] User can search tips by title (write command "4")
   - [x] User can search tips by a tag (write command "5")
+  - [x] User can export tips to a json file (write command "6")
+  - [x] User can import tips to a json file  (write command "7")
   - [x] User can exit the program (write command "0")
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/156927419-88bf9c05-a830-4996-9d95-9cd4b2ffc667.png">
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/158037538-453bd9b7-f971-4a5b-ae23-185755379ad1.png">
 
 
 <h2>Product Backlog</h2>
