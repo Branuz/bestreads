@@ -17,6 +17,14 @@ public class Exporter {
         exportArray = new JSONArray();;
     }
 
+    /**
+     * Create jsonfile of the tips in the database
+     *
+     * @param ArrayList of Tips 
+     * @param String filename
+     *
+     * @throws Exception
+     */
     public void createNewJsonFile(ArrayList<Tip> tips, String filename) {
 
         try { 
