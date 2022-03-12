@@ -49,7 +49,7 @@ public class UserInterface {
                 continue;
             }
             int command = Integer.valueOf(input);
-            
+
             if (command == 0) {
                 io.print("\nSee you soon!");
                 io.print("\n@->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->-- @->-->--\n");
@@ -59,7 +59,6 @@ public class UserInterface {
         }
     }
 
- 
     /**
      * Print out all the possible choices
      */
@@ -139,10 +138,14 @@ public class UserInterface {
      */
     public void printAsciiTable(List<Tip> tips) {
         io.print(AsciiTable.getTable(tips, Arrays.asList(
-            new Column().header("Id").headerAlign(HorizontalAlign.CENTER).with(tip -> Integer.toString(tip.getId())),
-            new Column().header("Title").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER).with(tip -> tip.getTitle()),
-            new Column().header("Url").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER).with(tip -> tip.getUrl()),
-            new Column().header("Tags").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER).with(tip -> tip.getTagsAsString()))));
+                new Column().header("Id").headerAlign(HorizontalAlign.CENTER)
+                        .with(tip -> Integer.toString(tip.getId())),
+                new Column().header("Title").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER)
+                        .with(tip -> tip.getTitle()),
+                new Column().header("Url").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER)
+                        .with(tip -> tip.getUrl()),
+                new Column().header("Tags").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.CENTER)
+                        .with(tip -> tip.getTagsAsString()))));
     }
 
     /**
@@ -216,30 +219,32 @@ public class UserInterface {
             io.print("Oops! Could not complete search without a tag.");
         }
     }
-    
+
     /**
      * Exports user's reading tips to json format.
-     * @see ReadingTips#exportTips() 
+     * 
+     * @see ReadingTips#exportTips()
      */
     public void exportTips() {
         io.print("Please give the name of the export file or choose default by enter:");
         String fileName = io.nextLine();
-        if (fileName.isBlank() | fileName.isEmpty()){
+        if (fileName.isBlank() | fileName.isEmpty()) {
             fileName = "exportFile.json";
         }
         this.tips.exportTips(fileName);
         io.print("All done! Your reading tips have been exported to " + fileName + ".");
     }
-    
+
     /**
      * Imports reading tips from exportFile.json.
-     * @see ReadingTips#importTips() 
+     * 
+     * @see ReadingTips#importTips()
      */
     public void importTips() {
         int initialSize = this.tips.getTips().size();
         io.print("Please give the name of the import file or choose default by enter:");
         String fileName = io.nextLine();
-        if (fileName.isBlank() | fileName.isEmpty()){
+        if (fileName.isBlank() | fileName.isEmpty()) {
             fileName = "exportFile.json";
         }
         this.tips.importTips(fileName);
