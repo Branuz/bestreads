@@ -7,11 +7,8 @@ import java.util.ArrayList;
 
 import bestreads.readingtip.Tip;
 
-/***********************************************
- *
- * THE CLASS IS NOT SQL INJECTION SAFE!
- *
- ***********************************************/
+/** Class for handling database connections
+ */
 public class DatabaseManager {
 
     /**
