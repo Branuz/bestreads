@@ -43,7 +43,7 @@ public class Stepdefs {
     @When("search criteria {string} is entered")
     public void searchTagGiven(String criteria) {
         testTips.deleteAllRows();
-        testTips.addTip("google", "www.google.com", "google,search");
+        testTips.addTip("ListApart", "https://alistapart.com/", "news");
         io = new UserInputsIOStub(command, criteria);
         ui = new UserInterface(io, testTips);
         ui.start();
@@ -93,8 +93,8 @@ public class Stepdefs {
     @When("user has created reading tips and gives the export file name {string}")
     public void exportCommandIsEntered(String fileName) {
         testTips.deleteAllRows();
-        testTips.addTip("test", "test", "test");
-        testTips.addTip("test2", "test2", "test2");
+        testTips.addTip("SlashDot", "https://slashdot.org/", "blogs, news");
+        testTips.addTip("tuts+", "https://code.tutsplus.com/", "tutorials");
         io = new UserInputsIOStub(command, fileName);
         ui = new UserInterface(io, testTips);
         ui.start();
@@ -109,8 +109,8 @@ public class Stepdefs {
     @When("user imports a json file named {string} located in project root including two tips")
     public void importCommandIsEntered(String fileName) {
         testTips.deleteAllRows();
-        testTips.addTip("test", "test", "test");
-        testTips.addTip("test2", "test2", "test2");
+        testTips.addTip("SlashDot", "https://slashdot.org/", "blogs, news");
+        testTips.addTip("tuts+", "https://code.tutsplus.com/", "tutorials");
         testTips.exportTips(fileName);
         io = new UserInputsIOStub(command, fileName);
         ui = new UserInterface(io, testTips);

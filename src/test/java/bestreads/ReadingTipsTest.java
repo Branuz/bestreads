@@ -44,38 +44,38 @@ public class ReadingTipsTest {
 
     @Test
     public void tipsCanBeAdded() {
-	    testTips.addTip("A", "a", "tag1");
-	    assertTrue(testTips.toString().contains("a, A"));
+	    testTips.addTip("SlashDot", "https://slashdot.org/", "blogs");
+	    assertTrue(testTips.toString().contains("https://slashdot.org/, SlashDot"));
     }
 
     @Test
     public void tipsToStringWorksWithListOfTips() {
 
-	    testTips.addTip("A", "a", "tag1");
-	    testTips.addTip("B", "b", "tag2");
+	    testTips.addTip("SlashDot", "https://slashdot.org/", "blogs");
+	    testTips.addTip("tuts+", "https://code.tutsplus.com/", "tutorials");
 
-	    assertTrue(testTips.toString().contains("a, A"));
-	    assertTrue(testTips.toString().contains("b, B"));
+	    assertTrue(testTips.toString().contains("https://slashdot.org/, SlashDot"));
+	    assertTrue(testTips.toString().contains("https://code.tutsplus.com/, tuts+"));
 
     }
     
     @Test
     public void searchByTitleGivesCorrectResults() {
-        testTips.addTip("A", "first result", "tag1");
-        testTips.addTip("B", "second result", "tag2");
-        testTips.addTip("C", "this should not be included", "tag3");
+        testTips.addTip("SlashDot", "https://slashdot.org/", "blogs");
+        testTips.addTip("SlashDot", "https://slashdot.org/", "news");
+        testTips.addTip("A List Apart", "https://alistapart.com/", "news");
 
         
         // !! Should also test that tip w/ title "this should not be included" is not included in search results
-        ArrayList<Tip> searchResults = testTips.searchByTitle("result");
+        ArrayList<Tip> searchResults = testTips.searchByTitle("SlashDot");
         assertEquals(2, searchResults.size());
         
     }
     
     @Test
     public void searchByTitleReturnsEmptyIfNoResults() {
-        testTips.addTip("A", "first result", "tag1");
-        testTips.addTip("B", "second result", "tag2");
+        testTips.addTip("SlashDot", "https://slashdot.org/", "blogs");
+        testTips.addTip("tuts+", "https://code.tutsplus.com/", "tutorials");
         
         ArrayList<Tip> searchResults = testTips.searchByTitle("find");
         assertEquals(0, searchResults.size());
@@ -83,35 +83,35 @@ public class ReadingTipsTest {
 
     @Test
     public void creatingTipWithOneTagWorks() {
-	    testTips.addTip("A", "first result", "tag1");
+	    testTips.addTip("SlashDot", "https://slashdot.org/", "blogs");
 
-	    assertTrue(testTips.toString().contains("tag1"));	
+	    assertTrue(testTips.toString().contains("blogs"));	
     }
 
     @Test
     public void creatingTipWithTwoTagsWorks() {
-        testTips.addTip("A", "first result", "tag1, tag2");
+        testTips.addTip("SlashDot", "https://slashdot.org/", "blogs, news");
 
-        assertTrue(testTips.toString().contains("tag1"));
-        assertTrue(testTips.toString().contains("tag1"));	
+        assertTrue(testTips.toString().contains("blogs"));
+        assertTrue(testTips.toString().contains("news"));	
     }
     
     @Test
     public void searchByTagGivesCorrectResults() {
-        testTips.addTip("D", "first result", "tag0");
-        testTips.addTip("E", "second result", "tag0");
-        testTips.addTip("F", "this should not be included", "tag2");
-        ArrayList<Tip> searchResults = testTips.searchByTag("tag0");
+        testTips.addTip("SlashDot", "https://slashdot.org/", "blogs, news");
+        testTips.addTip("tuts+", "https://code.tutsplus.com/", "tutorials");
+        testTips.addTip("A List Apart", "https://alistapart.com/", "news");
+        ArrayList<Tip> searchResults = testTips.searchByTag("news");
         assertEquals(2, searchResults.size());
         
     }
 
     @Test
     public void searchByTagReturnsEmptyIfNoResults() {
-        testTips.addTip("A", "first result", "tag1");
-        testTips.addTip("B", "second result", "tag2");
+        testTips.addTip("SlashDot", "https://slashdot.org/", "blogs");
+        testTips.addTip("tuts+", "https://code.tutsplus.com/", "tutorials");
         
-        ArrayList<Tip> searchResults = testTips.searchByTag("tag3");
+        ArrayList<Tip> searchResults = testTips.searchByTag("news");
         assertEquals(0, searchResults.size());
     }
 
@@ -119,8 +119,8 @@ public class ReadingTipsTest {
 
     @Test
     public void deleteAllTipsWorks() {
-        testTips.addTip("A", "first result", "tag1");
-        testTips.addTip("B", "second result", "tag2");
+        testTips.addTip("SlashDot", "https://slashdot.org/", "blogs, news");
+        testTips.addTip("tuts+", "https://code.tutsplus.com/", "tutorials");
         ArrayList<Integer> tips = testTips.getIds();
         assertEquals(2, tips.size());
         testTips.deleteAllRows();
@@ -135,11 +135,11 @@ public class ReadingTipsTest {
     }
 
     @Test
-    public void tipsCanBeSeachedByTitle() {
+    public void tipsCanBeSearchedByTitle() {
         DatabaseManager dbManager = new DatabaseManager(dbFileName);
         dbManager.searchByTitle("result");
-        testTips.addTip("A", "first result", "tag1");
-	    assertNotNull(dbManager.searchByTitle("result"));
+        testTips.addTip("SlashDot", "https://slashdot.org/", "blogs, news");
+	    assertNotNull(dbManager.searchByTitle("SlashDot"));
     }
 
 }

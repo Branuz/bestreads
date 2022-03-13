@@ -23,7 +23,7 @@ public class TipTest {
     
     @Before
     public void setUp() {
-        this.testTip = new Tip("https://ohjelmistotuotanto-hy-avoin.github.io/", "New Tip", "Tag");
+        this.testTip = new Tip("https://ohjelmistotuotanto-hy-avoin.github.io/", "Ohtu", "course");
         this.testTip.setId(0);
 
     }
@@ -32,7 +32,7 @@ public class TipTest {
     public void tipCanBeCreated() {
         
         assertEquals("https://ohjelmistotuotanto-hy-avoin.github.io/", testTip.getUrl());
-        assertEquals("New Tip", testTip.getTitle());
+        assertEquals("Ohtu", testTip.getTitle());
     }
     
     @Test
@@ -52,7 +52,7 @@ public class TipTest {
     @Test
     public void tipTagCanBeSet() {
         ArrayList<String> tags = new ArrayList<>();
-        tags.add("tag1");
+        tags.add("course");
         testTip.setTags(tags);
         
         assertEquals(tags, testTip.getTags());
@@ -60,7 +60,7 @@ public class TipTest {
     
     @Test
     public void tipCanBePrintedCorrectly() {
-        assertEquals("(id 0) New Tip, https://ohjelmistotuotanto-hy-avoin.github.io/, tags [tag]", testTip.toString());
+        assertEquals("(id 0) Ohtu, https://ohjelmistotuotanto-hy-avoin.github.io/, tags [course]", testTip.toString());
     }
 
     @Test
@@ -80,8 +80,8 @@ public class TipTest {
 
     @Test
     public void tipCanBeCreatedWithTagsAsAList() {
-        String[] tags = {"tag1","tag2"};
-        Tip tip4 = new Tip("https://ohjelmistotuotanto-hy-avoin.github.io/", "New Tip", 4, tags);
+        String[] tags = {"course"};
+        Tip tip4 = new Tip("https://ohjelmistotuotanto-hy-avoin.github.io/", "Ohtu", 4, tags);
         assertEquals(4, tip4.getId());
     }
 }
