@@ -85,11 +85,13 @@ public class DatabaseManager {
     public void deleteAllFromDatabase() {
         Statement s = null;
         String command = String.format("DELETE FROM Tips");
+        String deleteTags = String.format("DELETE FROM Tags");
 
         try {
             Connection conn = ConnectionManager.getConnection();
             s = conn.createStatement();
             s.execute(command);
+            s.execute(deleteTags);
             s.close();
             conn.close();
         } catch (Exception e) {
