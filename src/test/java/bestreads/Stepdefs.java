@@ -14,13 +14,15 @@ public class Stepdefs {
     private UserInputsIOStub io;
     private String command;
     private ReadingTips testTips;
+    private String[] prettyTable;
+    private DatabaseManager dbManager;
 
     String dbFileName = "bestreadstest.db";
 
     @Given("command {string} is selected")
     public void commandIsGiven(String command) {
         this.command = command;
-        DatabaseManager dbManager = new DatabaseManager(dbFileName);
+        this.dbManager = new DatabaseManager(dbFileName);
         this.testTips = new ReadingTips(dbManager);
     }
 
@@ -35,10 +37,13 @@ public class Stepdefs {
     public void tipAddedSuccessfully(String firstLine, String secondLine) {
         String value = "\n" + firstLine + "\n" + secondLine;
         assertEquals(value, io.outputs.get(14));
+        this.dbManager.deleteAllFromDatabase();
     }
 
     @When("search criteria {string} is entered")
     public void searchTagGiven(String criteria) {
+        testTips.deleteAllRows();
+        testTips.addTip("google", "www.google.com", "google,search");
         io = new UserInputsIOStub(command, criteria);
         ui = new UserInterface(io, testTips);
         ui.start();
@@ -75,6 +80,7 @@ public class Stepdefs {
         String expected = "Done! Tip with id 1 was deleted succesfully";
         String actual = string;
         assertEquals(expected, actual);
+        this.dbManager.deleteAllFromDatabase();
     }
 
     @Then("the program should fail deletion with error message {string}")
@@ -97,6 +103,7 @@ public class Stepdefs {
     @Then("the program should confirm the export with {string}")
     public void exportingTipsSuccessfull(String confirmation) {
         assertEquals(confirmation, io.outputs.get(12));
+        this.dbManager.deleteAllFromDatabase();
     }
 
     @When("user imports a json file named {string} located in project root including two tips")
@@ -114,6 +121,53 @@ public class Stepdefs {
     public void importingTipsSuccessfull() {
         String expected = "And... done! Imported 2 reading tip(s).";
         assertEquals(expected, io.outputs.get(12));
+        this.dbManager.deleteAllFromDatabase();
+    }
+
+    @When("title {string}, url {string}, tags {string} and command {string} are entered")
+    public void titleUrlTagsAndCommandAreEntered(String title, String url, String tags, String show) {
+        testTips.deleteAllRows();
+        io = new UserInputsIOStub(command, title, url,  tags, show);
+        ui = new UserInterface(io, testTips);
+        ui.start();
+    }
+
+    @Then("{string} as 1st row")
+    public void as1stRow(String expected) {
+        prettyTable = new String [] {"","","","",""};
+        prettyTable[0] = expected;
+    }
+
+    @Then("{string} as 2nd row")
+    public void as2ndRow(String expected) {
+        prettyTable[1] = expected;
+    }
+
+    @Then("{string} as 3rd row")
+    public void as3rdRow(String expected) {
+        prettyTable[2] = expected;
+    }
+
+    @Then("{string} as 4th row")
+    public void as4thRow(String expected) {
+        prettyTable[3] = expected;
+    }
+
+    @Then("{string} as final row")
+    public void asFinalRow(String expected) {
+        prettyTable[4] = expected;
+    }
+
+    @Then("the program should print the pretty table correctly")
+    public void theProgramShouldPrintThePrettyTableCorrectly() {
+        String expected = String.join(System.lineSeparator(),
+            prettyTable[0],
+            prettyTable[1],
+            prettyTable[2],
+            prettyTable[3],
+            prettyTable[4]);
+        assertEquals(expected, io.outputs.get(25));
+        this.dbManager.deleteAllFromDatabase();
     }
 
 }
