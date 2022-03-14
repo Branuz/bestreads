@@ -172,6 +172,8 @@ public class Tip {
 
     /**
      * Return tags for Ascii Table
+     * @return String in format:
+     *         "tag1, tag2, tag3"
      */
     public String getTagsAsString() {
         String tags = "";

@@ -134,7 +134,7 @@ public class UserInterface {
     }
 
     /**
-     * Shows given table data in an Ascii table
+     * Shows table data from given tips list in an Ascii table format
      */
     public void printAsciiTable(List<Tip> tips) {
         io.print(AsciiTable.getTable(tips, Arrays.asList(
