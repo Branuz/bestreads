@@ -122,9 +122,10 @@ public class FuzzyMatch {
      */
     public static Boolean fuzzyMatch(String a, String b) {
 
-	    return exactMatch(a, b) ||
-	            missingChar(a, b) ||
-	            additionalChar(a, b) ||
-	            flippedChar(a, b);
+	return exactMatch(a, b) ||
+	    missingChar(a, b) ||
+	    additionalChar(a, b) ||
+	    flippedChar(a, b);
+	
     }
 }
