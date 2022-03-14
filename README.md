@@ -13,20 +13,20 @@ To run the application write the following command.
 ./gradlew run
 ```
 
-You can run the tests with the following command.
+To run the tests write with the following command.
   
 ```
 ./gradlew test
 ```
 
 
-You can run the checkstyles with the following command.
+To run the checkstyles write the following command.
   
 ```
 ./gradlew checkstyleMain
 ```
 
-You can run the jacoco repoirt with the following command.
+To run the jacoco report write the following command.
 
 ```
 ./gradlew jacocoTestReport
@@ -34,12 +34,12 @@ You can run the jacoco repoirt with the following command.
 
 <h2>Features</h2>
 
-BestReads is designed for storing and searching reading tips. Tips are stored to a database (SQLite). The Java based program is used via terminal. 
+BestReads is designed for storing and searching reading tips. The Java based program is used via terminal. Tips are stored into a database (SQLite). Tips can be exported and imported.
 
   - [x] User can add a reading tip with a title, an url and related tags (write command "1")
   - [x] User can list all the tips she has added (write command "2")
   - [x] User can delete a tip by giving the id (write command "3")
-  - [x] User can search tips by title (write command "4")
+  - [x] User can fuzzy search tips by title (write command "4")
   - [x] User can search tips by a tag (write command "5")
   - [x] User can export tips to a json file (write command "6")
   - [x] User can import tips to a json file  (write command "7")
@@ -62,7 +62,7 @@ BestReads is designed for storing and searching reading tips. Tips are stored to
 * The new functionality has been manually tested by the programmer.
 * The functionality has been documented.
   * JavaDoc
-  * Significant new functionality should be documented in README and/or user manual
+  * Significant new functionality should be documented in README
 * Changes have been pushed to GitHub.
 
 
@@ -73,6 +73,8 @@ BestReads is designed for storing and searching reading tips. Tips are stored to
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/155896824-27882a78-274c-49c4-a112-4912e830fd20.png">
 
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/157181691-06440b99-6941-4a89-8805-e5bef2e58dd4.png">
+
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1563603/158232006-318e3298-d276-42bf-aa47-66fe9776e4a9.png">
 
 
 <h2>Final report of the project</h2>
