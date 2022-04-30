@@ -106,7 +106,7 @@ public class UserInterface {
      * Asks needed information from user and create a new
      * into the database
      */
-    public void addTip() {
+    private void addTip() {
 
         io.print("Please give the title for the tip");
         String title = io.nextLine();
